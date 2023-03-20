@@ -23,7 +23,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/></Configuration>
 		<Configuration Name="Debug|x64" TargetName="$(ProjectName)d" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\fistr1\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;  __WIN32__; WITH_MKL;HECMW_WITH_MUMPS; HECMW_SERIAL" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\hecmw1\include;$(WELSIM_SRC)\hecmw1\src\common;$(WELSIM_SRC)\fistr1\include;$(WELSIM_SRC)\fistr1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;  __WIN32__; WITH_MKL;HECMW_WITH_MUMPS; HECMW_SERIAL" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
 				<Tool Name="VFLibrarianTool"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -32,7 +32,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_fistr1_d"/></Configuration>
 		<Configuration Name="Release|x64" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\fistr1\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;HECMW_WITH_LAPACK;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\hecmw1\include;$(WELSIM_SRC)\hecmw1\src\common;$(WELSIM_SRC)\fistr1\include;$(WELSIM_SRC)\fistr1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;HECMW_WITH_LAPACK;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" RuntimeLibrary="rtMultiThreadedDLL"/>
 				<Tool Name="VFLibrarianTool"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -53,7 +53,6 @@
 		<File RelativePath=".\src\analysis\dynamic\mode\fstr_EIG_tridiag.f90"/>
 		<File RelativePath=".\src\analysis\dynamic\mode\fstr_solve_eigen.f90"/></Filter>
 		<Filter Name="transient">
-		<File RelativePath=".\src\analysis\dynamic\transit\dynamic_make_result.f90"/>
 		<File RelativePath=".\src\analysis\dynamic\transit\dynamic_mat_ass_bc.f90"/>
 		<File RelativePath=".\src\analysis\dynamic\transit\dynamic_mat_ass_bc_ac.f90"/>
 		<File RelativePath=".\src\analysis\dynamic\transit\dynamic_mat_ass_bc_vl.f90"/>
@@ -88,7 +87,6 @@
 		<File RelativePath=".\src\analysis\static\fstr_Ctrl_TimeInc.f90"/>
 		<File RelativePath=".\src\analysis\static\fstr_Cutback.f90"/>
 		<File RelativePath=".\src\analysis\static\fstr_mat_con_contact.f90"/>
-		<File RelativePath=".\src\analysis\static\fstr_mat_resid_contact.f90"/>
 		<File RelativePath=".\src\analysis\static\fstr_NodalStress.f90"/>
 		<File RelativePath=".\src\analysis\static\fstr_Residual.f90"/>
 		<File RelativePath=".\src\analysis\static\fstr_Restart.f90"/>
@@ -99,13 +97,6 @@
 		<File RelativePath=".\src\analysis\static\fstr_Update.f90"/>
 		<File RelativePath=".\src\analysis\static\make_result.f90"/>
 		<File RelativePath=".\src\analysis\static\readtemp.f90"/>
-		<File RelativePath=".\src\analysis\static\set_arrays_DirectSolver.f90"/>
-		<File RelativePath=".\src\analysis\static\solve_LINEQ_contact.f90"/>
-		<File RelativePath=".\src\analysis\static\solve_LINEQ_direct_serial_lag.f90"/>
-		<File RelativePath=".\src\analysis\static\solve_LINEQ_iter_contact.f90"/>
-		<File RelativePath=".\src\analysis\static\solve_LINEQ_mkl.f90"/>
-		<File RelativePath=".\src\analysis\static\solve_LINEQ_MUMPS_contact.f90"/>
-		<File RelativePath=".\src\analysis\static\sparse_matrix_contact.f90"/>
 		<File RelativePath=".\src\analysis\static\static_echo.f90"/>
 		<File RelativePath=".\src\analysis\static\static_output.f90"/></Filter></Filter>
 		<Filter Name="common">
@@ -123,14 +114,12 @@
 		<File RelativePath=".\src\common\fstr_precheck.f90"/>
 		<File RelativePath=".\src\common\fstr_rcap_io.f90"/>
 		<File RelativePath=".\src\common\fstr_setup.f90"/>
-		<File RelativePath=".\src\common\fstr_setup_data.f90"/>
 		<File RelativePath=".\src\common\fstr_setup_util.f90"/>
 		<File RelativePath=".\src\common\hecmw2fstr_mesh_conv.f90"/></Filter>
 		<Filter Name="lib">
 		<Filter Name="contact">
 		<File RelativePath=".\src\lib\contact\bucket_search.f90"/>
 		<File RelativePath=".\src\lib\contact\contact_lib.f90"/>
-		<File RelativePath=".\src\lib\contact\fstr_contact_comm.f90"/>
 		<File RelativePath=".\src\lib\contact\fstr_contact_def.f90"/>
 		<File RelativePath=".\src\lib\contact\fstr_contact_param.f90"/>
 		<File RelativePath=".\src\lib\contact\surf_ele.f90"/></Filter>
@@ -153,29 +142,9 @@
 		<Filter Name="physics">
 		<File RelativePath=".\src\lib\physics\calMatMatrix.f90"/>
 		<File RelativePath=".\src\lib\physics\creep.f90"/>
-		<File RelativePath=".\src\lib\physics\creepCombinedTimeHardening.f90"/>
-		<File RelativePath=".\src\lib\physics\creepExponentialForm.f90"/>
-		<File RelativePath=".\src\lib\physics\creepGeneralizedBlackburn.f90"/>
-		<File RelativePath=".\src\lib\physics\creepGeneralizedExponential.f90"/>
-		<File RelativePath=".\src\lib\physics\creepGeneralizedGarofalo.f90"/>
-		<File RelativePath=".\src\lib\physics\creepGeneralizedGraham.f90"/>
-		<File RelativePath=".\src\lib\physics\creepGeneralizedTimeHardening.f90"/>
-		<File RelativePath=".\src\lib\physics\creepModifiedStrainHardening.f90"/>
-		<File RelativePath=".\src\lib\physics\creepModifiedTimeHardening.f90"/>
-		<File RelativePath=".\src\lib\physics\creepNorton2.f90"/>
-		<File RelativePath=".\src\lib\physics\creepRationalPolynomial.f90"/>
-		<File RelativePath=".\src\lib\physics\creepStrainHardening.f90"/>
-		<File RelativePath=".\src\lib\physics\creepTimeHardening.f90"/>
 		<File RelativePath=".\src\lib\physics\ElasticLinear.f90"/>
 		<File RelativePath=".\src\lib\physics\Elastoplastic.f90"/>
 		<File RelativePath=".\src\lib\physics\Hyperelastic.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticBlatzKo.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticExtendedTube.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticGent.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticMooneyRivlin359.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticOgden.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticPolynomial.f90"/>
-		<File RelativePath=".\src\lib\physics\HyperelasticYeoh.f90"/>
 		<File RelativePath=".\src\lib\physics\material.f90"/>
 		<File RelativePath=".\src\lib\physics\mechgauss.f90"/>
 		<File RelativePath=".\src\lib\physics\Viscoelastic.f90"/></Filter>
@@ -190,10 +159,6 @@
 		<File RelativePath=".\src\lib\utilities\utilities.f90"/></Filter>
 		<File RelativePath=".\src\lib\dynamic_mass.f90"/>
 		<File RelativePath=".\src\lib\eigen_LIB.f90"/>
-		<File RelativePath=".\src\lib\eigen_LIB_2d1mass.f90"/>
-		<File RelativePath=".\src\lib\eigen_LIB_2d2mass.f90"/>
-		<File RelativePath=".\src\lib\eigen_LIB_3d1mass.f90"/>
-		<File RelativePath=".\src\lib\eigen_LIB_3d2mass.f90"/>
 		<File RelativePath=".\src\common\fstr_ctrl_util_f.inc"/>
 		<File RelativePath=".\src\lib\GaussM.f90"/>
 		<File RelativePath=".\src\lib\heat_LIB.f90"/>
@@ -203,7 +168,6 @@
 		<File RelativePath=".\src\lib\heat_LIB_FILM.f90"/>
 		<File RelativePath=".\src\lib\heat_LIB_NEUTRAL.f90"/>
 		<File RelativePath=".\src\lib\heat_LIB_RADIATE.f90"/>
-		<File RelativePath=".\src\lib\heat_LIB_THERMAL.f90"/>
 		<File RelativePath=".\src\lib\m_common_struct.f90"/>
 		<File RelativePath=".\src\lib\m_fstr.f90"/>
 		<File RelativePath=".\src\lib\m_out.f90"/>
@@ -220,6 +184,7 @@
 		<File RelativePath=".\src\lib\static_LIB_3d_vp.f90"/>
 		<File RelativePath=".\src\lib\static_LIB_3dIC.f90"/>
 		<File RelativePath=".\src\lib\static_LIB_beam.f90"/>
+		<File RelativePath=".\src\lib\static_LIB_C3D4_selectiveESNS.f90"/>
 		<File RelativePath=".\src\lib\static_LIB_C3D8.f90"/>
 		<File RelativePath=".\src\lib\static_LIB_Fbar.f90"/>
 		<File RelativePath=".\src\lib\static_LIB_shell.f90"/></Filter></Files>

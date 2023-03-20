@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(WELSIM_LIBPACK)\include;.\hecmw1\include;$(MSMPI_INC)\x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
+    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1\include;$(MSMPI_INC)\x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
     <LibraryPath>$(WELSIM_LIBPACK)\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>

@@ -126,6 +126,14 @@
 		<Filter Name="mumps">
 		<File RelativePath=".\src\solver\mumps\hecmw_MUMPS_wrapper.F90"/>
 		<File RelativePath=".\src\solver\mumps\hecmw_solver_direct_MUMPS.f90"/></Filter>
+		<Filter Name="contact">
+		<File RelativePath=".\src\solver\contact\hecmw_mat_resid_contact.f90"/>
+		<File RelativePath=".\src\solver\contact\set_arrays_DirectSolver.f90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_direct_serial_lag.f90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_iter_contact.f90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_mkl.F90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_MUMPS_contact.f90"/>
+		<File RelativePath=".\src\solver\contact\sparse_matrix_contact.f90"/></Filter>
 		<Filter Name="precond">
 		<Filter Name="11">
 		<File RelativePath=".\src\solver\precond\11\hecmw_precond_11.f90"/>
@@ -189,5 +197,6 @@
 		<Filter Name="sparse_matrix">
 		<File RelativePath=".\src\solver\sparse_matrix\sparse_matrix.f90"/>
 		<File RelativePath=".\src\solver\sparse_matrix\sparse_matrix_hec.f90"/></Filter>
-		<File RelativePath=".\src\solver\hecmw_solver.f90"/></Filter></Files>
+		<File RelativePath=".\src\solver\hecmw_solver.f90"/>
+		<File RelativePath=".\src\solver\hecmw_solver_contact.f90"/></Filter></Files>
 	<Globals/></VisualStudioProject>

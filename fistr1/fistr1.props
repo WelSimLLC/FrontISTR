@@ -4,7 +4,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include;$(MSMPI_INC)\x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
+    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1\include;$(MSMPI_INC)\x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
     <LibraryPath>$(WELSIM_LIBPACK)\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
