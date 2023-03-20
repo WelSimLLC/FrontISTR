@@ -1163,7 +1163,7 @@ static void free_to_iff_format(char* line, char* iff) {
     if (*line_p == ',') {
       *token_p = 0;
       if (i >= FIELD_NUMBER) {
-                                printf("?ե???????¿??????);
+                                printf("xxx");
 				break;
       }
       iff_set_field(iff, i, token);
@@ -1200,7 +1200,7 @@ static void small_to_iff_format(char* line, char* iff) {
     iff_set_field(iff, i, token);
   } else {
     /* JP-198 */
-                printf("?ե???????¿??????);
+                printf("xxx");
   }
 
   i++;

@@ -164,7 +164,6 @@
     <ClCompile Include="src\common\hecmw_util.c" />
     <ClCompile Include="src\common\hecmw_varray_int.c" />
     <ClCompile Include="src\common\hecmw_visual_if.c" />
-    <ClCompile Include="src\solver\precond\33\hecmw_ML_wrapper_33.c" />
     <ClCompile Include="src\solver\precond\nn\hecmw_ML_wrapper.c" />
     <ClCompile Include="src\solver\solver_direct_parallel\matrix2graph.c" />
     <ClCompile Include="src\solver\solver_direct_parallel\matrix_repart.c" />

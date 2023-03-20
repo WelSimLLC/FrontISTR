@@ -2450,9 +2450,9 @@ int HECMW_ctrl_make_subdir(char *filename) {
   char *token;
   char separator[10];
   char *saveptr;
-  mode_t mode;
   DIR *dp;
 #ifndef _WINDOWS
+  mode_t mode;
   mode = S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
 #endif
   strcpy(fname, filename);

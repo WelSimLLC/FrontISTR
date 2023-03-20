@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\src\common;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\src\visualizer;$(MSMPI_INC)/x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
+    <IncludePath>$(MSMPI_INC);$(MSMPI_INC)/x64;$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1;$(WELSIM_SRC)\hecmw1\src\common;$(WELSIM_SRC)\hecmw1\src\visualizer;$(IncludePath)</IncludePath>
     <LibraryPath>$(WELSIM_LIBPACK)\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
@@ -11,6 +11,9 @@
     <ClCompile>
       <PreprocessorDefinitions>_UNICODE;UNICODE;USE_GKREGEX;_GK_ERROR_C_;_WINDOWS;DEBUG;_DEBUG;__WIN32__;WIN32_MSVC;HECMW_SERIAL;HECMW_WITH_MKL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>postbuild_hecmw_d</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>
