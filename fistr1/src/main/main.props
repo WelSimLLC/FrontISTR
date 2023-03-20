@@ -4,18 +4,18 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\solver\WelSim.FemSolver2\hecmw1\include;$(WELSIM_SRC)\solver\WelSim.FemSolver2;$(IncludePath)</IncludePath>
-    <LibraryPath>$(WELSIM_LIBPACK)\lib;$(IFORT_COMPILER17)\compiler\lib\intel64_win;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1\include;$(WELSIM_SRC);$(WELSIM_SRC)\hecmw1;$(INTEL_MKL)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(WELSIM_LIBPACK)\lib;$(IFORT_COMPILER)\compiler\lib\intel64_win;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>_UNICODE;UNICODE;USE_GKREGEX;_GK_ERROR_C_;_WINDOWS;__WIN32__;_CRT_SECURE_NO_WARNINGS;HECMW_SERIAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;_WINDOWS;__WIN32__;_CRT_SECURE_NO_WARNINGS;NDEBUG;HECMW_WITH_LAPACK;HECMW_SERIAL;HECMW_MKL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>postbuild_FemSolver2</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>FemSolver2\ffistr1.lib;FemSolver2\fhecmw1.lib;FemSolver2\hecmw1.lib;FemSolver2\libfistr.lib;FemSolver2\fistr_main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FemSolver2\hecmw1.lib;FemSolver2\fhecmw1.lib;FemSolver2\libfistr.lib;FemSolver2\ffistr1.lib;FemSolver2\fistr_main.lib;$(INTEL_MKL)\lib\intel64\mkl_intel_lp64_dll.lib;$(INTEL_MKL)\lib\intel64\mkl_intel_thread_dll.lib;Ws2_32.lib;mumps\dmumps.lib;mumps\dmumps_c.lib;mumps\mumps_common_f.lib;mumps\mumps_common_c.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
