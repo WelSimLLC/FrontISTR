@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="hecmw1/hecmw1.cbp" />
+		<Project filename="hecmw1/fhecmw1.cbp" />
+		<Project filename="fistr1/cfistr1.cbp" />
+		<Project filename="fistr1/ffistr1.cbp" />
+		<Project filename="fistr1/WelSimFemSolver2.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

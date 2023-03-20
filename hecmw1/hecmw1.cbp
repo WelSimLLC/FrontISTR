@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="hecmw1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/hecmw1_d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_hecmw1_d.sh" />
+					<Add after="./postbuild_hecmw1_d.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/hecmw1" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-DNDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_hecmw1.sh" />
+					<Add after="./postbuild_hecmw1.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-fPIC" />
+			<Add option="-DHECMW_MALLOC" />
+			<Add option="-DWITH_MKL" />
+			<Add option="-DHECMW_WITH_MUMPS" />
+			<Add option="-DHECMW_SERIAL" />
+			<Add directory="$(WELSIM_LIBPACK)/include" />
+			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
+			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/common" />
+			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/visualizer" />
+			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/include" />
+		</Compiler>
+		<Linker>
+			<Add directory="$(WELSIM_LIBPACK)/lib" />
+			<Add directory="/usr/lib/x86_64-linux-gnu" />
+		</Linker>
+		<Unit filename="dirent.h" />
+		<Unit filename="src/common/hecmw_ablex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_ablex.h" />
+		<Unit filename="src/common/hecmw_bin_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_bin_io.h" />
+		<Unit filename="src/common/hecmw_bit_array.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_bit_array.h" />
+		<Unit filename="src/common/hecmw_comm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_comm.h" />
+		<Unit filename="src/common/hecmw_common.h" />
+		<Unit filename="src/common/hecmw_common_define.h" />
+		<Unit filename="src/common/hecmw_config.h" />
+		<Unit filename="src/common/hecmw_conn_conv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_conn_conv.h" />
+		<Unit filename="src/common/hecmw_control.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_control.h" />
+		<Unit filename="src/common/hecmw_ctrllex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_ctrllex.h" />
+		<Unit filename="src/common/hecmw_debug_write_dist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_debug_write_dist.h" />
+		<Unit filename="src/common/hecmw_dist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist.h" />
+		<Unit filename="src/common/hecmw_dist_alloc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist_alloc.h" />
+		<Unit filename="src/common/hecmw_dist_copy_c2f.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist_copy_c2f.h" />
+		<Unit filename="src/common/hecmw_dist_copy_f2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist_copy_f2c.h" />
+		<Unit filename="src/common/hecmw_dist_free.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist_free.h" />
+		<Unit filename="src/common/hecmw_dist_print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist_print.h" />
+		<Unit filename="src/common/hecmw_dist_refine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_dist_refine.h" />
+		<Unit filename="src/common/hecmw_error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_error.h" />
+		<Unit filename="src/common/hecmw_etype.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_etype.h" />
+		<Unit filename="src/common/hecmw_finalize.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_finalize.h" />
+		<Unit filename="src/common/hecmw_geometric.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_geometric.h" />
+		<Unit filename="src/common/hecmw_gflex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_gflex.h" />
+		<Unit filename="src/common/hecmw_hash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_hash.h" />
+		<Unit filename="src/common/hecmw_heclex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_heclex.h" />
+		<Unit filename="src/common/hecmw_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_init.h" />
+		<Unit filename="src/common/hecmw_io.h" />
+		<Unit filename="src/common/hecmw_io_abaqus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_abaqus.h" />
+		<Unit filename="src/common/hecmw_io_dist.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_dist.h" />
+		<Unit filename="src/common/hecmw_io_geofem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_geofem.h" />
+		<Unit filename="src/common/hecmw_io_get_mesh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_get_mesh.h" />
+		<Unit filename="src/common/hecmw_io_get_mesh_if.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_hec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_hec.h" />
+		<Unit filename="src/common/hecmw_io_mesh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_mesh.h" />
+		<Unit filename="src/common/hecmw_io_nastran.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_nastran.h" />
+		<Unit filename="src/common/hecmw_io_nastran_dummy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_put_mesh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_io_put_mesh.h" />
+		<Unit filename="src/common/hecmw_io_struct.h" />
+		<Unit filename="src/common/hecmw_lib_fc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_lib_fc.h" />
+		<Unit filename="src/common/hecmw_log.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_log.h" />
+		<Unit filename="src/common/hecmw_malloc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_malloc.h" />
+		<Unit filename="src/common/hecmw_map_int.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_map_int.h" />
+		<Unit filename="src/common/hecmw_msg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_msg.h" />
+		<Unit filename="src/common/hecmw_msg_table.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_msgno.h" />
+		<Unit filename="src/common/hecmw_path.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_path.h" />
+		<Unit filename="src/common/hecmw_put_mesh_if.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_reorder.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_reorder.h" />
+		<Unit filename="src/common/hecmw_restart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_restart.h" />
+		<Unit filename="src/common/hecmw_result.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_result.h" />
+		<Unit filename="src/common/hecmw_result_bin_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_result_copy_c2f.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_result_copy_c2f.h" />
+		<Unit filename="src/common/hecmw_result_copy_f2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_result_copy_f2c.h" />
+		<Unit filename="src/common/hecmw_result_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_result_io.h" />
+		<Unit filename="src/common/hecmw_result_txt_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_set_int.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_set_int.h" />
+		<Unit filename="src/common/hecmw_struct.h" />
+		<Unit filename="src/common/hecmw_system.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_system.h" />
+		<Unit filename="src/common/hecmw_time.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_time.h" />
+		<Unit filename="src/common/hecmw_ucd_print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_ucd_print.h" />
+		<Unit filename="src/common/hecmw_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_util.h" />
+		<Unit filename="src/common/hecmw_varray_int.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_varray_int.h" />
+		<Unit filename="src/common/hecmw_visual_if.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/hecmw/hecmw.h" />
+		<Unit filename="src/solver/precond/33/hecmw_ML_wrapper_33.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/solver/precond/nn/hecmw_ML_wrapper.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/solver/solver_direct_parallel/matrix2graph.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/solver/solver_direct_parallel/matrix2graph.h" />
+		<Unit filename="src/solver/solver_direct_parallel/matrix_repart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/solver/solver_direct_parallel/mem_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/solver/solver_direct_parallel/separator.h" />
+		<Unit filename="src/solver/solver_direct_parallel/separator_c2f_c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_fstr_endian.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_fstr_endian.h" />
+		<Unit filename="src/visualizer/hecmw_fstr_output_femap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_fstr_output_femap.h" />
+		<Unit filename="src/visualizer/hecmw_fstr_output_vtk.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_fstr_output_vtk.h" />
+		<Unit filename="src/visualizer/hecmw_vis_SF_geom.h" />
+		<Unit filename="src/visualizer/hecmw_vis_bmp.h" />
+		<Unit filename="src/visualizer/hecmw_vis_calc_attr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_calc_attr.h" />
+		<Unit filename="src/visualizer/hecmw_vis_case_table.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_case_table.h" />
+		<Unit filename="src/visualizer/hecmw_vis_color_composite_sf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_color_composite_sf.h" />
+		<Unit filename="src/visualizer/hecmw_vis_color_composite_vr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_color_composite_vr.h" />
+		<Unit filename="src/visualizer/hecmw_vis_color_mapping.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_color_mapping.h" />
+		<Unit filename="src/visualizer/hecmw_vis_combine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_combine.h" />
+		<Unit filename="src/visualizer/hecmw_vis_comm_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_comm_util.h" />
+		<Unit filename="src/visualizer/hecmw_vis_connectivity_build.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_connectivity_build.h" />
+		<Unit filename="src/visualizer/hecmw_vis_define_parameters.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_define_parameters.h" />
+		<Unit filename="src/visualizer/hecmw_vis_define_parameters_vr.h" />
+		<Unit filename="src/visualizer/hecmw_vis_endian.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_endian.h" />
+		<Unit filename="src/visualizer/hecmw_vis_font_texture.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_font_texture.h" />
+		<Unit filename="src/visualizer/hecmw_vis_generate_histogram_sf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_generate_histogram_sf.h" />
+		<Unit filename="src/visualizer/hecmw_vis_generate_histogram_vr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_generate_histogram_vr.h" />
+		<Unit filename="src/visualizer/hecmw_vis_intersection_find.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_intersection_find.h" />
+		<Unit filename="src/visualizer/hecmw_vis_mem_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_mem_util.h" />
+		<Unit filename="src/visualizer/hecmw_vis_mesh_extent.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_mesh_extent.h" />
+		<Unit filename="src/visualizer/hecmw_vis_new_refine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_new_refine.h" />
+		<Unit filename="src/visualizer/hecmw_vis_patch_const.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_patch_const.h" />
+		<Unit filename="src/visualizer/hecmw_vis_psf_rendering.h" />
+		<Unit filename="src/visualizer/hecmw_vis_pvr_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_pvr_main.h" />
+		<Unit filename="src/visualizer/hecmw_vis_ray_trace.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_ray_trace.h" />
+		<Unit filename="src/visualizer/hecmw_vis_read_control.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_read_control.h" />
+		<Unit filename="src/visualizer/hecmw_vis_read_voxel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_read_voxel.h" />
+		<Unit filename="src/visualizer/hecmw_vis_rendering.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_rendering.h" />
+		<Unit filename="src/visualizer/hecmw_vis_resampling.h" />
+		<Unit filename="src/visualizer/hecmw_vis_subimage_composite_sf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_subimage_composite_sf.h" />
+		<Unit filename="src/visualizer/hecmw_vis_subimage_composite_vr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_subimage_composite_vr.h" />
+		<Unit filename="src/visualizer/hecmw_vis_surface_compute.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_surface_compute.h" />
+		<Unit filename="src/visualizer/hecmw_vis_surface_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_surface_main.h" />
+		<Unit filename="src/visualizer/hecmw_vis_tetra_intersect.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_tetra_intersect.h" />
+		<Unit filename="src/visualizer/hecmw_vis_ucd_trans.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_ucd_trans.h" />
+		<Unit filename="src/visualizer/hecmw_vis_voxel_gen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_vis_voxel_gen.h" />
+		<Unit filename="src/visualizer/hecmw_visualizer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/visualizer/hecmw_visualizer.h" />
+		<Unit filename="unistd.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

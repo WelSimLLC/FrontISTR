@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\solver\WelSim.FemSolver2\hecmw1\include;$(WELSIM_SRC)\solver\WelSim.FemSolver2;$(IncludePath)</IncludePath>
+    <LibraryPath>$(WELSIM_LIBPACK)\lib;$(IFORT_COMPILER17)\compiler\lib\intel64_win;$(LibraryPath)</LibraryPath>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;USE_GKREGEX;_GK_ERROR_C_;_WINDOWS;__WIN32__;_CRT_SECURE_NO_WARNINGS;HECMW_SERIAL;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>postbuild_FemSolver2d</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>FemSolver2\ffistr1d.lib;FemSolver2\fhecmw1d.lib;FemSolver2\hecmw1d.lib;FemSolver2\libfistrd.lib;FemSolver2\fistr_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="src\visualizer\hecmw_vis_color_composite_sf.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_color_mapping.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_comm_util.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_connectivity_build.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_define_parameters.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_endian.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_font_texture.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_generate_histogram_sf.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_generate_histogram_vr.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_intersection_find.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_mem_util.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_mesh_extent.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_new_refine.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_patch_const.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_read_control.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_read_voxel.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_rendering.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_resampling.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_SF_geom.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_subimage_composite_sf.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_subimage_composite_vr.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_surface_compute.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_surface_main.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_tetra_intersect.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_ucd_trans.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_voxel_gen.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_fstr_output_femap.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_bmp.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_calc_attr.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_case_table.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_visualizer.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_pvr_main.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_ray_trace.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_color_composite_vr.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hecmw\hecmw.h">
+      <Filter>hecmw</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_struct.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_system.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_time.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_ucd_print.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_util.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_varray_int.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_ablex.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_bin_io.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_bit_array.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_comm.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_common_define.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_config.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_conn_conv.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_control.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_ctrllex.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_debug_write_dist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist_alloc.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist_copy_c2f.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist_copy_f2c.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist_free.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist_print.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_dist_refine.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_error.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_etype.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_finalize.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_geometric.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_gflex.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_hash.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_heclex.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_init.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_abaqus.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_dist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_geofem.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_get_mesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_hec.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_mesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_nastran.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_put_mesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_io_struct.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_lib_fc.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_log.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_malloc.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_map_int.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_msg.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_msgno.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_path.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_reorder.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_restart.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_result.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_result_copy_c2f.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_result_copy_f2c.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_set_int.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\solver\solver_direct_parallel\matrix2graph.h">
+      <Filter>solver\solver_direct_parallel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\solver\solver_direct_parallel\separator.h">
+      <Filter>solver\solver_direct_parallel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_vis_combine.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_fstr_output_vtk.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\hecmw_fstr_endian.h">
+      <Filter>visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\hecmw_result_io.h">
+      <Filter>common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\visualizer\hecmw_vis_color_composite_sf.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_color_mapping.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_comm_util.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_connectivity_build.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_define_parameters.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_endian.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_font_texture.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_generate_histogram_sf.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_generate_histogram_vr.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_intersection_find.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_mem_util.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_mesh_extent.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_new_refine.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_patch_const.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_read_control.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_read_voxel.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_rendering.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_subimage_composite_sf.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_subimage_composite_vr.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_surface_compute.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_surface_main.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_tetra_intersect.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_ucd_trans.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_voxel_gen.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_fstr_output_femap.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_calc_attr.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_case_table.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_visualizer.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_pvr_main.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_ray_trace.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_color_composite_vr.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_ablex.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_bin_io.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_bit_array.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_comm.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_conn_conv.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_control.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_ctrllex.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_debug_write_dist.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist_alloc.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist_copy_c2f.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist_copy_f2c.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist_free.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist_print.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_dist_refine.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_error.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_etype.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_finalize.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_geometric.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_gflex.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_hash.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_heclex.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_init.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_abaqus.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_dist.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_geofem.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_get_mesh.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_get_mesh_if.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_hec.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_mesh.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_nastran.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_io_put_mesh.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_lib_fc.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_log.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_malloc.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_map_int.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_msg.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_msg_table.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_path.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_put_mesh_if.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_reorder.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_restart.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_result.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_result_copy_c2f.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_result_copy_f2c.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_set_int.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_system.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_time.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_ucd_print.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_util.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_varray_int.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_visual_if.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solver\solver_direct_parallel\matrix2graph.c">
+      <Filter>solver\solver_direct_parallel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solver\solver_direct_parallel\mem_util.c">
+      <Filter>solver\solver_direct_parallel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solver\solver_direct_parallel\separator_c2f_c.c">
+      <Filter>solver\solver_direct_parallel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solver\solver_direct_parallel\matrix_repart.c">
+      <Filter>solver\solver_direct_parallel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solver\precond\33\hecmw_ML_wrapper_33.c">
+      <Filter>solver\precond</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solver\precond\nn\hecmw_ML_wrapper.c">
+      <Filter>solver\precond</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_vis_combine.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_fstr_output_vtk.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\hecmw_fstr_endian.c">
+      <Filter>visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_result_io.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_result_txt_io.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\hecmw_result_bin_io.c">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="visualizer">
+      <UniqueIdentifier>{17f3b8d8-2f5e-4935-85d0-3d5d123de2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{72f0690a-8077-44e9-ac1b-25caa177c4ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver">
+      <UniqueIdentifier>{1f066c8d-da86-4556-a7d1-ec953d07a967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hecmw">
+      <UniqueIdentifier>{793d8ceb-a33b-40dc-8492-90bd9604d784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\solver_direct_parallel">
+      <UniqueIdentifier>{2e3bf657-2be8-4510-b051-eaca81c6aa71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\precond">
+      <UniqueIdentifier>{df683f30-6757-43e5-bd35-9840dbdb8b5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\common\hecmw_ctrllex.l">
+      <Filter>common</Filter>
+    </None>
+    <None Include="src\common\hecmw_gflex.l">
+      <Filter>common</Filter>
+    </None>
+    <None Include="src\common\hecmw_heclex.l">
+      <Filter>common</Filter>
+    </None>
+    <None Include="src\common\res_bin_io.inc">
+      <Filter>common</Filter>
+    </None>
+    <None Include="src\common\res_txt_io.inc">
+      <Filter>common</Filter>
+    </None>
+    <None Include="src\common\hecmw_ablex.l">
+      <Filter>common</Filter>
+    </None>
+  </ItemGroup>
+</Project>

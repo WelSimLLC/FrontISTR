@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="fhecmw1" />
+		<Option pch_mode="2" />
+		<Option compiler="gfortran" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/fhecmw1_d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gfortran" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_fhecmw1_d.sh" />
+					<Add after="./postbuild_fhecmw1_d.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/fhecmw1" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gfortran" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_fhecmw1.sh" />
+					<Add after="./postbuild_fhecmw1.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-cpp" />
+			<Add option="-DWITH_MKL" />
+			<Add option="-DHECMW_WITH_MUMPS" />
+			<Add directory="$(WELSIM_LIBPACK)/include" />
+			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
+			<Add directory="$(WELSIM_LIBPACK)/include/mumps" />
+			<Add directory="$(INTELDIR)/mkl/include" />
+			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/include" />
+			<Add directory="$(INTEL_DIR)/mkl/include" />
+		</Compiler>
+		<Unit filename="src/common/hecmw_control_f.f90" />
+		<Unit filename="src/common/hecmw_dist_copy_c2f_f.f90" />
+		<Unit filename="src/common/hecmw_dist_copy_f2c_f.f90" />
+		<Unit filename="src/common/hecmw_dist_free_f.f90" />
+		<Unit filename="src/common/hecmw_dist_print_f.f90" />
+		<Unit filename="src/common/hecmw_etype_f.f90" />
+		<Unit filename="src/common/hecmw_io.f90" />
+		<Unit filename="src/common/hecmw_logging.f90" />
+		<Unit filename="src/common/hecmw_msg_f.f90" />
+		<Unit filename="src/common/hecmw_msgno_f.f90" />
+		<Unit filename="src/common/hecmw_restart_f.f90" />
+		<Unit filename="src/common/hecmw_result_f.f90" />
+		<Unit filename="src/common/hecmw_util_f.f90" />
+		<Unit filename="src/common/hecmw_visualizer_f.f90" />
+		<Unit filename="src/hecmw/hecmw.f90" />
+		<Unit filename="src/solver/clustermkl/hecmw_ClusterMKL_wrapper.F90" />
+		<Unit filename="src/solver/clustermkl/hecmw_solver_direct_ClusterMKL.f90" />
+		<Unit filename="src/solver/communication/hecmw_comm_f.f90" />
+		<Unit filename="src/solver/communication/hecmw_comm_group.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_11.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_11i.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_22.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_22i.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_33.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_33i.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_44.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_44i.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_66.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_66i.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_mm.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_SR_mmi.f90" />
+		<Unit filename="src/solver/communication/hecmw_solver_misc.f90" />
+		<Unit filename="src/solver/hecmw_solver.f90" />
+		<Unit filename="src/solver/init/hecmw_solve_error.f90" />
+		<Unit filename="src/solver/init/hecmw_solve_init.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_BiCGSTAB.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_CG.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_GMRES.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_GPBiCG.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_Iterative.f90" />
+		<Unit filename="src/solver/las/hecmw_jadm.f90" />
+		<Unit filename="src/solver/las/hecmw_jadm_33.f90" />
+		<Unit filename="src/solver/las/hecmw_jadm_44.f90" />
+		<Unit filename="src/solver/las/hecmw_jadm_nn.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las_11.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las_22.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las_33.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las_44.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las_66.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_las_nn.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_scaling.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_scaling_33.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_scaling_44.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_scaling_66.f90" />
+		<Unit filename="src/solver/las/hecmw_solver_scaling_nn.f90" />
+		<Unit filename="src/solver/las/hecmw_tuning_fx.f90" />
+		<Unit filename="src/solver/matrix/hecmw_allocate.f90" />
+		<Unit filename="src/solver/matrix/hecmw_array_util.f90" />
+		<Unit filename="src/solver/matrix/hecmw_estimate_condition.F90" />
+		<Unit filename="src/solver/matrix/hecmw_local_matrix.f90" />
+		<Unit filename="src/solver/matrix/hecmw_mat_ass.f90" />
+		<Unit filename="src/solver/matrix/hecmw_mat_con.f90" />
+		<Unit filename="src/solver/matrix/hecmw_mat_id.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_contact.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_dump.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_misc.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_ordering_CM.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_ordering_MC.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_reorder.f90" />
+		<Unit filename="src/solver/matrix/hecmw_pair_array.f90" />
+		<Unit filename="src/solver/mkl/hecmw_MKL_wrapper.F90" />
+		<Unit filename="src/solver/mkl/hecmw_solver_direct_MKL.f90" />
+		<Unit filename="src/solver/mpc/hecmw_mpc_prepost.f90" />
+		<Unit filename="src/solver/mumps/hecmw_MUMPS_wrapper.F90" />
+		<Unit filename="src/solver/mumps/hecmw_solver_direct_MUMPS.f90" />
+		<Unit filename="src/solver/precond/11/hecmw_precond_11.f90" />
+		<Unit filename="src/solver/precond/11/hecmw_precond_DIAG_11.f90" />
+		<Unit filename="src/solver/precond/11/hecmw_precond_SSOR_11.f90" />
+		<Unit filename="src/solver/precond/22/hecmw_precond_22.f90" />
+		<Unit filename="src/solver/precond/22/hecmw_precond_DIAG_22.f90" />
+		<Unit filename="src/solver/precond/22/hecmw_precond_SSOR_22.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_ML_helper_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_BILU_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_DIAG_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_ML_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_RIF_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_SAINV_33.f90" />
+		<Unit filename="src/solver/precond/33/hecmw_precond_SSOR_33.f90" />
+		<Unit filename="src/solver/precond/44/hecmw_precond_44.f90" />
+		<Unit filename="src/solver/precond/44/hecmw_precond_BILU_44.f90" />
+		<Unit filename="src/solver/precond/44/hecmw_precond_DIAG_44.f90" />
+		<Unit filename="src/solver/precond/44/hecmw_precond_SSOR_44.f90" />
+		<Unit filename="src/solver/precond/66/hecmw_precond_66.f90" />
+		<Unit filename="src/solver/precond/66/hecmw_precond_BILU_66.f90" />
+		<Unit filename="src/solver/precond/66/hecmw_precond_DIAG_66.f90" />
+		<Unit filename="src/solver/precond/66/hecmw_precond_SSOR_66.f90" />
+		<Unit filename="src/solver/precond/hecmw_precond.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_ML_helper.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_BILU_nn.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_DIAG_nn.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_ML_nn.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_RIF_nn.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_SAINV_nn.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_SSOR_nn.f90" />
+		<Unit filename="src/solver/precond/nn/hecmw_precond_nn.f90" />
+		<Unit filename="src/solver/solver_direct/_unused_code.f90" />
+		<Unit filename="src/solver/solver_direct/hecmw_solver_direct.f90" />
+		<Unit filename="src/solver/solver_direct_lag/hecmw_solver_direct_serial_lag.f90" />
+		<Unit filename="src/solver/solver_direct_lag/m_child_matrix_lag.f90" />
+		<Unit filename="src/solver/solver_direct_lag/m_crs_matrix_lag.f90" />
+		<Unit filename="src/solver/solver_direct_lag/m_irjc_matrix_lag.f90" />
+		<Unit filename="src/solver/solver_direct_lag/my_hecmw_util_f_lag.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/hecmw_solver_direct_parallel.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_cclsmatrix.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_child_matrix.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_crs_matrix.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_elap.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_irjc_matrix.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_irjcmatrix.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_matrix_partition_info.f90" />
+		<Unit filename="src/solver/sparse_matrix/sparse_matrix.f90" />
+		<Unit filename="src/solver/sparse_matrix/sparse_matrix_hec.f90" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

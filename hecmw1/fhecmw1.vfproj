@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{41A0A9F4-DF42-45A3-B40D-D4275AD0FF33}">
+	<Platforms>
+		<Platform Name="Win32"/>
+		<Platform Name="x64"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Debug|x64" TargetName="$(ProjectName)d" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_fhecmw_d.bat"/></Configuration>
+		<Configuration Name="Release|x64" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_fhecmw"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="common">
+		<File RelativePath=".\src\common\hecmw_control_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_dist_copy_c2f_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_dist_copy_f2c_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_dist_free_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_dist_print_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_etype_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_io.f90"/>
+		<File RelativePath=".\src\common\hecmw_logging.f90"/>
+		<File RelativePath=".\src\common\hecmw_msg_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_msgno_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_restart_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_result_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_util_f.f90"/>
+		<File RelativePath=".\src\common\hecmw_visualizer_f.f90"/></Filter>
+		<Filter Name="hecmw">
+		<File RelativePath=".\src\hecmw\hecmw.f90"/></Filter>
+		<Filter Name="solver">
+		<Filter Name="clustermkl">
+		<File RelativePath=".\src\solver\clustermkl\hecmw_ClusterMKL_wrapper.F90"/>
+		<File RelativePath=".\src\solver\clustermkl\hecmw_solver_direct_ClusterMKL.f90"/></Filter>
+		<Filter Name="communication">
+		<File RelativePath=".\src\solver\communication\hecmw_comm_f.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_comm_group.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_misc.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_11.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_11i.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_22.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_22i.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_33.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_33i.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_44.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_44i.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_66.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_66i.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_mm.f90"/>
+		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_mmi.f90"/></Filter>
+		<Filter Name="init">
+		<File RelativePath=".\src\solver\init\hecmw_solve_error.f90"/>
+		<File RelativePath=".\src\solver\init\hecmw_solve_init.f90"/></Filter>
+		<Filter Name="iterative">
+		<File RelativePath=".\src\solver\iterative\hecmw_solver_BiCGSTAB.f90"/>
+		<File RelativePath=".\src\solver\iterative\hecmw_solver_CG.f90"/>
+		<File RelativePath=".\src\solver\iterative\hecmw_solver_GMRES.f90"/>
+		<File RelativePath=".\src\solver\iterative\hecmw_solver_GPBiCG.f90"/>
+		<File RelativePath=".\src\solver\iterative\hecmw_solver_Iterative.f90"/></Filter>
+		<Filter Name="las">
+		<File RelativePath=".\src\solver\las\hecmw_jadm.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_jadm_33.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_jadm_44.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_jadm_nn.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las_11.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las_22.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las_33.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las_44.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las_66.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_las_nn.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_scaling.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_scaling_33.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_scaling_44.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_scaling_66.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_solver_scaling_nn.f90"/>
+		<File RelativePath=".\src\solver\las\hecmw_tuning_fx.f90"/></Filter>
+		<Filter Name="matrix">
+		<File RelativePath=".\src\solver\matrix\hecmw_allocate.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_array_util.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_estimate_condition.F90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_local_matrix.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_mat_ass.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_mat_con.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_mat_id.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_matrix_contact.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_matrix_dump.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_matrix_misc.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_matrix_ordering_CM.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_matrix_ordering_MC.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_matrix_reorder.f90"/>
+		<File RelativePath=".\src\solver\matrix\hecmw_pair_array.f90"/></Filter>
+		<Filter Name="mkl">
+		<File RelativePath=".\src\solver\mkl\hecmw_MKL_wrapper.F90"/>
+		<File RelativePath=".\src\solver\mkl\hecmw_solver_direct_MKL.f90"/></Filter>
+		<Filter Name="mpc">
+		<File RelativePath=".\src\solver\mpc\hecmw_mpc_prepost.f90"/></Filter>
+		<Filter Name="mumps">
+		<File RelativePath=".\src\solver\mumps\hecmw_MUMPS_wrapper.F90"/>
+		<File RelativePath=".\src\solver\mumps\hecmw_solver_direct_MUMPS.f90"/></Filter>
+		<Filter Name="precond">
+		<Filter Name="11">
+		<File RelativePath=".\src\solver\precond\11\hecmw_precond_11.f90"/>
+		<File RelativePath=".\src\solver\precond\11\hecmw_precond_DIAG_11.f90"/>
+		<File RelativePath=".\src\solver\precond\11\hecmw_precond_SSOR_11.f90"/></Filter>
+		<Filter Name="22">
+		<File RelativePath=".\src\solver\precond\22\hecmw_precond_22.f90"/>
+		<File RelativePath=".\src\solver\precond\22\hecmw_precond_DIAG_22.f90"/>
+		<File RelativePath=".\src\solver\precond\22\hecmw_precond_SSOR_22.f90"/></Filter>
+		<Filter Name="33">
+		<File RelativePath=".\src\solver\precond\33\hecmw_ML_helper_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_BILU_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_DIAG_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_ML_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_RIF_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_SAINV_33.f90"/>
+		<File RelativePath=".\src\solver\precond\33\hecmw_precond_SSOR_33.f90"/></Filter>
+		<Filter Name="44">
+		<File RelativePath=".\src\solver\precond\44\hecmw_precond_44.f90"/>
+		<File RelativePath=".\src\solver\precond\44\hecmw_precond_BILU_44.f90"/>
+		<File RelativePath=".\src\solver\precond\44\hecmw_precond_DIAG_44.f90"/>
+		<File RelativePath=".\src\solver\precond\44\hecmw_precond_SSOR_44.f90"/></Filter>
+		<Filter Name="66">
+		<File RelativePath=".\src\solver\precond\66\hecmw_precond_66.f90"/>
+		<File RelativePath=".\src\solver\precond\66\hecmw_precond_BILU_66.f90"/>
+		<File RelativePath=".\src\solver\precond\66\hecmw_precond_DIAG_66.f90"/>
+		<File RelativePath=".\src\solver\precond\66\hecmw_precond_SSOR_66.f90"/></Filter>
+		<Filter Name="nn">
+		<File RelativePath=".\src\solver\precond\nn\hecmw_ML_helper.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_BILU_nn.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_DIAG_nn.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_ML_nn.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_nn.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_RIF_nn.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_SAINV_nn.f90"/>
+		<File RelativePath=".\src\solver\precond\nn\hecmw_precond_SSOR_nn.f90"/></Filter>
+		<File RelativePath=".\src\solver\precond\hecmw_precond.f90"/></Filter>
+		<Filter Name="solver_direct">
+		<File RelativePath=".\src\solver\solver_direct\_unused_code.f90"/>
+		<File RelativePath=".\src\solver\solver_direct\hecmw_ordering.F90"/>
+		<File RelativePath=".\src\solver\solver_direct\hecmw_ordering_metis.F90"/>
+		<File RelativePath=".\src\solver\solver_direct\hecmw_ordering_qmd.f90"/>
+		<File RelativePath=".\src\solver\solver_direct\hecmw_ordering_rcm.f90"/>
+		<File RelativePath=".\src\solver\solver_direct\hecmw_solver_direct.f90"/></Filter>
+		<Filter Name="solver_direct_lag">
+		<File RelativePath=".\src\solver\solver_direct_lag\hecmw_solver_direct_serial_lag.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_lag\m_child_matrix_lag.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_lag\m_crs_matrix_lag.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_lag\m_irjc_matrix_lag.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_lag\my_hecmw_util_f_lag.f90"/></Filter>
+		<Filter Name="solver_direct_parallel">
+		<File RelativePath=".\src\solver\solver_direct_parallel\hecmw_solver_direct_parallel.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_cclsmatrix.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_child_matrix.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_crs_matrix.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_elap.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_irjc_matrix.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_irjcmatrix.f90"/>
+		<File RelativePath=".\src\solver\solver_direct_parallel\m_matrix_partition_info.f90"/></Filter>
+		<Filter Name="sparse_matrix">
+		<File RelativePath=".\src\solver\sparse_matrix\sparse_matrix.f90"/>
+		<File RelativePath=".\src\solver\sparse_matrix\sparse_matrix_hec.f90"/></Filter>
+		<File RelativePath=".\src\solver\hecmw_solver.f90"/></Filter></Files>
+	<Globals/></VisualStudioProject>

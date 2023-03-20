@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="11.0" ProjectIdGuid="{9A230C0F-B231-4AC8-A368-68849D358B69}">
+	<Platforms>
+		<Platform Name="Win32"/>
+		<Platform Name="x64"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Debug|x64" TargetName="$(ProjectName)_d">
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\fistr1\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;DEBUG;_WINDOWS;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" AdditionalLibraryDirectories="$(WELSIM_LIBPACK)\lib;$(IFORT_COMPILER17)\mkl\lib\intel64_win;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\um\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\ucrt\x64" IgnoreDefaultLibraryNames="libcmt.lib" GenerateDebugInformation="true" SubSystem="subSystemConsole" AdditionalDependencies="$(NOINHERIT) user32.lib mumps\dmumps_d.lib mumps\dmumps_c_d.lib mumps\mumps_common_f_d.lib mumps\mumps_common_c_d.lib FemSolver2\hecmw1d.lib FemSolver2\fhecmw1d.lib FemSolver2\libfistrd.lib FemSolver2\ffistr1d.lib metis\metis_d.lib mkl_core_dll.lib mkl_intel_lp64_dll.lib mkl_intel_thread_dll.lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_FemSolver2d"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|x64">
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\fistr1\include;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;NDEBUG;_WINDOWS;HECMW_SERIAL;HECMW_WITH_MUMPS;HECMW_WITH_MKL" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" AdditionalLibraryDirectories="$(WELSIM_LIBPACK)\lib;$(IFORT_COMPILER17)\mkl\lib\intel64_win;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\um\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\ucrt\x64" IgnoreDefaultLibraryNames="libcmt.lib" SubSystem="subSystemConsole" AdditionalDependencies="$(NOINHERIT) user32.lib mumps\dmumps.lib mumps\dmumps_c.lib mumps\mumps_common_f.lib mumps\mumps_common_c.lib FemSolver2\hecmw1.lib FemSolver2\fhecmw1.lib FemSolver2\libfistr.lib FemSolver2\ffistr1.lib metis\metis.lib mkl_core_dll.lib mkl_intel_lp64_dll.lib mkl_intel_thread_dll.lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_FemSolver2"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
+	<Files>
+		<File RelativePath=".\fistr_main.f90"/></Files>
+	<Globals/></VisualStudioProject>

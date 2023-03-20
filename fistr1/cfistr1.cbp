@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="cfistr1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/cfistr1_d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_cfistr1_d.sh" />
+					<Add after="./postbuild_cfistr1_d.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/cfistr1" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-DNDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_cfistr1.sh" />
+					<Add after="./postbuild_cfistr1.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-fPIC" />
+			<Add option="-DWITH_MKL" />
+			<Add option="-DHECMW_WITH_MUMPS" />
+			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/common" />
+			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/include" />
+			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
+		</Compiler>
+		<Unit filename="src/common/fstr_ctrl_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/fstr_ctrl_util.h" />
+		<Unit filename="src/common/fstr_sort_index.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/fstr_sort_index.h" />
+		<Unit filename="src/common/hecmw2fstr_connect_conv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw2fstr_connect_conv.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

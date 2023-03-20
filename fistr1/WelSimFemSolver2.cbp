@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="WelSimFemSolver2" />
+		<Option pch_mode="2" />
+		<Option compiler="gfortran" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/WelSimFemSolver2_d" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/fistr1/obj/Debug" />
+					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/obj/Debug" />
+				</Compiler>
+				<Linker>
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libcfistr1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfhecmw1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/metis/libmetis.a" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="chmod +x prebuild_FemSolver2_d.sh" />
+					<Add before="./prebuild_FemSolver2_d.sh" />
+					<Add after="chmod +x postbuild_FemSolver2_d.sh" />
+					<Add after="./postbuild_FemSolver2_d.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/WelSimFemSolver2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/fistr1/obj/Release" />
+					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/obj/Release" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libcfistr1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfhecmw1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/metis/libmetis.a" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="chmod +x prebuild_FemSolver2.sh" />
+					<Add before="./prebuild_FemSolver2.sh" />
+					<Add after="chmod +x postbuild_FemSolver2.sh" />
+					<Add after="./postbuild_FemSolver2.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-cpp" />
+			<Add option="-Wall" />
+			<Add option="-DHECMW_METIS_VER=5" />
+			<Add option="-DWITH_MKL" />
+			<Add option="-DHECMW_WITH_MUMPS" />
+			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,-rpath,.:./:./lib:./plugins:./plugins/platforms:./vtk6:./occ6:./boost:./intel" />
+			<Add library="libmpi" />
+			<Add library="libmkl_intel_lp64" />
+			<Add library="libmkl_intel_thread" />
+			<Add library="libmkl_core" />
+			<Add library="libiomp5" />
+			<Add library="libmkl_scalapack_lp64" />
+			<Add library="libmkl_blacs_intelmpi_lp64" />
+			<Add library="libpthread" />
+			<Add library="libmpifort" />
+			<Add directory="$(WELSIM_LIBPACK)/lib/mpi" />
+			<Add directory="$(INTEL_DIR)/mkl/lib/intel64" />
+			<Add directory="$(INTEL_DIR)/lib/intel64" />
+			<Add directory="$(INTEL_DIR)/compiler/lib/intel64" />
+		</Linker>
+		<Unit filename="src/main/fistr_main.f90" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
