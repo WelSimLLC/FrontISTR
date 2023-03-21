@@ -17,13 +17,13 @@
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource1.h" />
+    <Image Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WelSimFemSolver2.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="icon.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B1265A68-4C02-4E3E-A2BF-87BFF7881E8F}</ProjectGuid>

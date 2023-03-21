@@ -3,13 +3,13 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(MSMPI_INC);$(MSMPI_INC)/x64;$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1;$(WELSIM_SRC)\hecmw1\src\common;$(WELSIM_SRC)\hecmw1\src\visualizer;$(IncludePath)</IncludePath>
+    <IncludePath>$(MSMPI_INC);$(MSMPI_INC)/x64;$(WELSIM_LIBPACK)\include;$(FrontISTR_SRC)\hecmw1;$(FrontISTR_SRC)\hecmw1\src\common;$(FrontISTR_SRC)\hecmw1\src\visualizer;$(IncludePath)</IncludePath>
     <LibraryPath>$(WELSIM_LIBPACK)\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>_UNICODE;UNICODE;USE_GKREGEX;_GK_ERROR_C_;_WINDOWS;DEBUG;_DEBUG;__WIN32__;WIN32_MSVC;HECMW_SERIAL;HECMW_WITH_MKL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;_WINDOWS;DEBUG;_DEBUG;__WIN32__;WIN32_MSVC;HECMW_SERIAL;HECMW_WITH_MKL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>postbuild_hecmw_d</Command>

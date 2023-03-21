@@ -4,12 +4,12 @@
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource1.h" />
+    <Image Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WelSimFemSolver2.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="icon.ico" />
   </ItemGroup>
 </Project>

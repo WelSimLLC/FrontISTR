@@ -3,13 +3,13 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1\include;$(MSMPI_INC)\x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
+    <IncludePath>$(WELSIM_LIBPACK)\include;$(FrontISTR_SRC)\hecmw1\include;$(MSMPI_INC)\x64;$(MSMPI_INC);$(IncludePath)</IncludePath>
     <LibraryPath>$(WELSIM_LIBPACK)\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>_UNICODE;UNICODE;USE_GKREGEX;_GK_ERROR_C_;_WINDOWS;__WIN32__;_CRT_SECURE_NO_WARNINGS;DEBUG;_DEBUG;HECMW_SERIAL;HECMW_WITH_MKL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;_WINDOWS;__WIN32__;_CRT_SECURE_NO_WARNINGS;DEBUG;_DEBUG;HECMW_SERIAL;HECMW_WITH_MKL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

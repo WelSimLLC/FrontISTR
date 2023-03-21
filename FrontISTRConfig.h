@@ -21,7 +21,7 @@
 /* #undef WITH_REVOCAP */
 /* #undef WITH_METIS */
 /* #undef WITH_METIS_VER_4 */
-/* #undef WITH_MUMPS */
+#define WITH_MUMPS
 #define WITH_LAPACK
 /* #undef WITH_ML */
 /* #undef WITH_PARMETIS */

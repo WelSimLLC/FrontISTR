@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(WELSIM_LIBPACK)\include;$(WELSIM_SRC)\hecmw1\include;$(WELSIM_SRC);$(WELSIM_SRC)\hecmw1;$(INTEL_MKL)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(WELSIM_LIBPACK)\include;$(FrontISTR_SRC)\hecmw1\include;$(FrontISTR_SRC);$(FrontISTR_SRC)\hecmw1;$(INTEL_MKL)\include;$(WELSIM_SRC);$(IncludePath)</IncludePath>
     <LibraryPath>$(WELSIM_LIBPACK)\lib;$(IFORT_COMPILER)\compiler\lib\intel64_win;$(LibraryPath)</LibraryPath>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>

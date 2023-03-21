@@ -1,6 +1,7 @@
 REM call ../../env_var.bat
 
-set WELSIM_SRC=D:\WelSimLLC-github\FrontISTR
+set FrontISTR_SRC=D:\WelSimLLC-github\FrontISTR
+set WELSIM_SRC=D:\WelSimLLC\CodeDV\WelSim\v26\src
 set WELSIM_LIBPACK=D:\WelSimLLC\CodeDV\libPack
 set WELSIM_EXEC=D:\WelSimLLC\executable26
 set INTEL_MKL=C:\Program Files (x86)\Intel\oneAPI\mkl\2022.2.0

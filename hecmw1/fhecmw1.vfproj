@@ -23,7 +23,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/></Configuration>
 		<Configuration Name="Debug|x64" TargetName="$(ProjectName)d" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(FrontISTR_SRC)\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
 				<Tool Name="VFLibrarianTool"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -32,7 +32,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_fhecmw_d.bat"/></Configuration>
 		<Configuration Name="Release|x64" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(WELSIM_SRC)\solver\WelSimFemSolver2\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_SERIAL;HECMW_WITH_MKL" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(FrontISTR_SRC)\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL;NDEBUG" RuntimeLibrary="rtMultiThreadedDLL"/>
 				<Tool Name="VFLibrarianTool"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -73,6 +73,14 @@
 		<File RelativePath=".\src\solver\communication\hecmw_solver_misc.f90"/>
 		<File RelativePath=".\src\solver\communication\hecmw_solver_SR.F90"/>
 		<File RelativePath=".\src\solver\communication\hecmw_solver_SR_i.F90"/></Filter>
+		<Filter Name="contact">
+		<File RelativePath=".\src\solver\contact\hecmw_mat_resid_contact.f90"/>
+		<File RelativePath=".\src\solver\contact\set_arrays_DirectSolver.f90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_direct_serial_lag.f90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_iter_contact.f90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_mkl.F90"/>
+		<File RelativePath=".\src\solver\contact\solve_LINEQ_MUMPS_contact.f90"/>
+		<File RelativePath=".\src\solver\contact\sparse_matrix_contact.f90"/></Filter>
 		<Filter Name="init">
 		<File RelativePath=".\src\solver\init\hecmw_solve_error.f90"/>
 		<File RelativePath=".\src\solver\init\hecmw_solve_init.f90"/></Filter>
@@ -126,14 +134,6 @@
 		<Filter Name="mumps">
 		<File RelativePath=".\src\solver\mumps\hecmw_MUMPS_wrapper.F90"/>
 		<File RelativePath=".\src\solver\mumps\hecmw_solver_direct_MUMPS.f90"/></Filter>
-		<Filter Name="contact">
-		<File RelativePath=".\src\solver\contact\hecmw_mat_resid_contact.f90"/>
-		<File RelativePath=".\src\solver\contact\set_arrays_DirectSolver.f90"/>
-		<File RelativePath=".\src\solver\contact\solve_LINEQ_direct_serial_lag.f90"/>
-		<File RelativePath=".\src\solver\contact\solve_LINEQ_iter_contact.f90"/>
-		<File RelativePath=".\src\solver\contact\solve_LINEQ_mkl.F90"/>
-		<File RelativePath=".\src\solver\contact\solve_LINEQ_MUMPS_contact.f90"/>
-		<File RelativePath=".\src\solver\contact\sparse_matrix_contact.f90"/></Filter>
 		<Filter Name="precond">
 		<Filter Name="11">
 		<File RelativePath=".\src\solver\precond\11\hecmw_precond_11.f90"/>
