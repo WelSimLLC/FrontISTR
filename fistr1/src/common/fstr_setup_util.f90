@@ -4,6 +4,12 @@
 !-------------------------------------------------------------------------------
 !> \brief This module contains auxiliary functions in calculation setup
 
+#ifdef __WIN32__
+#define PATHSEP "\\"
+#else
+#define PATHSEP "/"
+#endif
+
 module fstr_setup_util
   use m_fstr
   use hecmw
@@ -1412,10 +1418,11 @@ contains
 
   subroutine fstr_setup_visualize_main( ctrl, vis_filename )
     implicit none
-    integer(kind=kint) :: ctrl
+    integer(kind=kint) :: ctrl, length
     integer(kind=kint) :: rcode
     integer(kind=kint) :: i, start_n, end_n
     character(HECMW_FILENAME_LEN) :: vis_filename
+    character(HECMW_FILENAME_LEN) :: filepath
     integer(kind=kint), parameter :: buffsize = 127
     character( buffsize ) :: buff
     character( buffsize ) :: head
@@ -1423,6 +1430,15 @@ contains
 
     start_n = fstr_ctrl_get_c_h_pos( ctrl )
     end_n = fstr_ctrl_get_rec_number( ctrl )
+
+    call hecmw_ctrl_file_path( filepath )
+    ! RUN IT BACKWARDS to remove the trailing blanks, no idea why trim() does not work for filepath!!!
+    DO length = LEN(filepath), 1, -1
+        IF (filepath(length:length) .NE. ' ') EXIT
+    END DO
+    if (length > 0) then
+        vis_filename = filepath(1:length)//PATHSEP//trim(vis_filename) ! build full file name with path
+    endif
 
     open ( IFVS, file = trim(vis_filename), status = 'replace', err = 1000)
     do i=start_n, end_n

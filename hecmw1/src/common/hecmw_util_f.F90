@@ -495,9 +495,10 @@ contains
   !C
   !C    INIT. HECMW-FEM process's
   !C
-  subroutine hecmw_init
+    subroutine hecmw_init(filepath)
+    character(len=HECMW_FILENAME_LEN):: filepath
     character(len=HECMW_FILENAME_LEN):: ctrlfile = "hecmw_ctrl.dat"
-    call hecmw_init_ex(ctrlfile)
+    call hecmw_init_ex(filepath, ctrlfile)
   end subroutine hecmw_init
 
 
@@ -508,7 +509,8 @@ contains
   !C
   !C    INIT. HECMW-FEM process's
   !C
-  subroutine hecmw_init_ex(ctrlfile)
+  subroutine hecmw_init_ex(filepath, ctrlfile)
+    character(len=HECMW_FILENAME_LEN):: filepath
     character(len=HECMW_FILENAME_LEN):: ctrlfile
     integer(kind=kint) :: ierr
 
@@ -528,7 +530,7 @@ contains
 
     call hecmw_comm_init_if(hecmw_comm, hecmw_PETOT, hecmw_rank, hecmw_group)
 
-    call hecmw_ctrl_init_ex_if(ctrlfile, ierr)
+    call hecmw_ctrl_init_ex_if(filepath, ctrlfile, ierr)
     if(ierr /= 0) then
       call  hecmw_abort( hecmw_comm_get_comm( ) )
     endif

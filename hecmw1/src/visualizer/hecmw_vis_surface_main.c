@@ -83,17 +83,31 @@ void HECMW_vis_psf_rendering(struct hecmwST_local_mesh *mesh,
       return;
     }
   }
+
+  // build file name with full path
+  char fnamefull[HECMW_FILENAME_LEN + 1];
+  HECMW_ctrl_get_file_path(fnamefull);
   if ((sf[1].output_type == 6) || (sf[1].output_type == 7) ||
       (sf[1].output_type == 8) || (sf[1].output_type == 9)) {
     strcat(outfile1, ".inp");
+    if (fnamefull && strlen(fnamefull) > 0)
+    {
+        strcat(fnamefull, PATHSEP);
+        strcat(fnamefull, outfile1);
+    }
+    else
+    {
+        strcpy(fnamefull, outfile1);
+    }
+
     if (sf[1].output_type == 6) {
-      HECMW_avs_output(mesh, data, outfile1, VIS_COMM);
+      HECMW_avs_output(mesh, data, fnamefull, VIS_COMM);
     } else if (sf[1].output_type == 8) {
-      HECMW_reorder_avs_output(mesh, data, outfile1, VIS_COMM);
+      HECMW_reorder_avs_output(mesh, data, fnamefull, VIS_COMM);
     } else if (sf[1].output_type == 7) {
-      HECMW_bin_avs_output(mesh, data, outfile1, VIS_COMM);
+      HECMW_bin_avs_output(mesh, data, fnamefull, VIS_COMM);
     } else if (sf[1].output_type == 9) {
-      HECMW_microavs_output(mesh, data, outfile1, VIS_COMM);
+      HECMW_microavs_output(mesh, data, fnamefull, VIS_COMM);
     }
 
     return;
@@ -102,13 +116,41 @@ void HECMW_vis_psf_rendering(struct hecmwST_local_mesh *mesh,
     char buf[16];
     sprintf(buf, "_%d.inp", mynode);
     strcat(outfile1, buf);
-    HECMW_separate_avs_output(mesh, data, outfile1);
+    if (fnamefull && strlen(fnamefull) > 0)
+    {
+        strcat(fnamefull, PATHSEP);
+        strcat(fnamefull, outfile1);
+    }
+    else
+    {
+        strcpy(fnamefull, outfile1);
+    }
+
+    HECMW_separate_avs_output(mesh, data, fnamefull);
     return;
   } else if(sf[1].output_type==15) {
-    HECMW_vtk_output(mesh, data, body, outfile1, VIS_COMM);
+      if (fnamefull && strlen(fnamefull) > 0)
+      {
+          strcat(fnamefull, PATHSEP);
+          strcat(fnamefull, outfile1);
+      }
+      else
+      {
+          strcpy(fnamefull, outfile1);
+      }
+    HECMW_vtk_output(mesh, data, body, fnamefull, VIS_COMM);
     return;
   } else if(sf[1].output_type==16) {
-    HECMW_bin_vtk_output(mesh, data, body, outfile1, VIS_COMM);
+      if (fnamefull && strlen(fnamefull) > 0)
+      {
+          strcat(fnamefull, PATHSEP);
+          strcat(fnamefull, outfile1);
+      }
+      else
+      {
+          strcpy(fnamefull, outfile1);
+      }
+    HECMW_bin_vtk_output(mesh, data, body, fnamefull, VIS_COMM);
     return;
   }
 

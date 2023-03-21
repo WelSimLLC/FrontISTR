@@ -66,7 +66,19 @@ void generate_histogram_graph_vr(double tmincolor, double tmaxcolor,
     for (i = 0; i < 500; i++) t_count[i] = count[i];
   }
   if (mynode == 0) {
-    fp = fopen("histogram.bmp", "wb");
+      // combine the path and file name
+      char fnamefull[HECMW_FILENAME_LEN + 1];
+      HECMW_ctrl_get_file_path(fnamefull);
+      if (fnamefull && strlen(fnamefull) > 0)
+      {
+          strcat(fnamefull, PATHSEP);
+          strcat(fnamefull, "histogram.bmp");
+      }
+      else
+      {
+          strcpy(fnamefull, "histogram.bmp");
+      }
+    fp = fopen(fnamefull, "wb");
     if (fp == NULL)
       HECMW_vis_print_exit("Cannot generate the histogram output file");
     graph = (double *)HECMW_calloc(400 * 530 * 3, sizeof(double));
@@ -320,7 +332,19 @@ void output_histogram_vr(double tmincolor, double tmaxcolor, double *var,
     for (i = 0; i < 100; i++) t_count[i] = count[i];
   }
   if (mynode == 0) {
-    fp = fopen("histogram.file", "w");
+      // combine the path and file name
+      char fnamefull[HECMW_FILENAME_LEN + 1];
+      HECMW_ctrl_get_file_path(fnamefull);
+      if (fnamefull && strlen(fnamefull) > 0)
+      {
+          strcat(fnamefull, PATHSEP);
+          strcat(fnamefull, "histogram.file");
+      }
+      else
+      {
+          strcpy(fnamefull, "histogram.file");
+      }
+    fp = fopen(fnamefull, "w");
     if (fp == NULL)
       HECMW_vis_print_exit("Cannot generate the histogram output file");
     for (i = 0; i < 100; i++)

@@ -898,6 +898,44 @@ contains
     !  normal = normal/dsqrt(dot_product(normal, normal))
   end function
 
+  !> Calculate |J| of 3d-surface
+  function SurfaceDet( fetype, nn, localcoord, elecoord ) result( det )
+    integer, intent(in)           :: fetype            !< type of surface element
+    integer, intent(in)           :: nn                !< number of elemental nodes
+    real(kind=kreal), intent(in)  :: localcoord(2)     !< position
+    real(kind=kreal), intent(in)  :: elecoord(3,nn)    !< nodes coordinates of element
+    real(kind=kreal) :: normal(3), det
+    real(kind=kreal) :: deriv(nn,2), gderiv(3,2)
+
+    select case (fetype)
+      case (fe_tri3n)
+        !error check
+        call ShapeDeriv_tri3n(deriv(1:3,1:2))
+      case (fe_tri6n)
+        !error check
+        call ShapeDeriv_tri6n(localcoord,deriv(1:6,1:2))
+      case (fe_quad4n)
+        !error check
+        call ShapeDeriv_quad4n(localcoord,deriv(1:4,1:2))
+      case (fe_quad8n)
+        !error check
+        call ShapeDeriv_quad8n(localcoord,deriv(1:8,1:2))
+      case default
+        ! error message
+        det=0.d0
+        return
+    end select
+
+    gderiv = matmul( elecoord, deriv )
+    !DETERMINANT OF JACOBIAN
+    normal(1) = gderiv(2,1)*gderiv(3,2) - gderiv(3,1)*gderiv(2,2)
+    normal(2) = gderiv(3,1)*gderiv(1,2) - gderiv(1,1)*gderiv(3,2)
+    normal(3) = gderiv(1,1)*gderiv(2,2) - gderiv(2,1)*gderiv(1,2)
+    det = normal(1) + normal(2) + normal(3) 
+    
+    if( det==0.d0 ) stop "Math error in SurfaceDet! Determinant==0.0"
+  end function
+  
   !> Calculate normal of 2d-edge
   function EdgeNormal( fetype, nn, localcoord, elecoord ) result( normal )
     integer, intent(in)           :: fetype            !< type of surface element

@@ -102,7 +102,19 @@ void voxel_gen(double range[6], double c_range[2], int nv[3],
       n_voxel = nv[0] * nv[1] * nv[2];
       /*   fprintf(stderr, "the number of voxel is %d\n", n_voxel);
        */
-      if ((fp = fopen("voxel.file", "w")) == NULL)
+       // combine the path and file name
+      char fnamefull[HECMW_FILENAME_LEN + 1];
+      HECMW_ctrl_get_file_path(fnamefull);
+      if (fnamefull && strlen(fnamefull) > 0)
+      {
+          strcat(fnamefull, PATHSEP);
+          strcat(fnamefull, "voxel.file");
+      }
+      else
+      {
+          strcpy(fnamefull, "voxel.file");
+      }
+      if ((fp = fopen(fnamefull, "w")) == NULL)
         HECMW_vis_print_exit("output voxel file error: voxel.file");
       dx    = (trange[1] - trange[0]) / nv[0];
       dy    = (trange[3] - trange[2]) / nv[1];

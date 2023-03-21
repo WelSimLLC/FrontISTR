@@ -32,11 +32,14 @@ contains
 
     call hecmw_mpc_mat_init(hecMESH, hecMAT, hecMESHmpc, hecMATmpc)
 
-    start_time = 0.0d0
-    do i = 1, ISTEP - 1
-      start_time = start_time + fstrHEAT%STEP_EETIME(i)
-    enddo
-
+    if(ISTEP == 1)then
+      start_time = 0.0d0
+    else
+      start_time = 0.0d0
+      do i = 1, ISTEP - 1
+        start_time = start_time + fstrHEAT%STEP_EETIME(i)
+      enddo
+    endif
     total_time = start_time + current_time
 
     delta_time_base = fstrHEAT%STEP_DLTIME(ISTEP)
@@ -57,10 +60,11 @@ contains
       endif
     endif
 
-    if(fstrHEAT%is_steady /= 1 .and. total_step == 1) then
+    !if(fstrHEAT%is_steady /= 1 .and. total_step == 1) then
+      call heat_output_log(hecMESH, fstrPARAM, fstrHEAT, 0, 0.0d0)
       call heat_output_result(hecMESH, fstrHEAT, 0, total_time, .true.)
       call heat_output_visual(hecMESH, fstrRESULT, fstrHEAT, 0, total_time, .true.)
-    endif
+    !endif
 
     !C--------------------   START TRANSIENT LOOP   ------------------------
     tr_loop: do

@@ -70,8 +70,19 @@ struct hecmwST_local_mesh *HECMW_get_mesh(char *name_ID) {
   if (files == NULL) return NULL;
 
   if (files->n_mesh == 1 &&
-      files->meshfiles[0].type == HECMW_CTRL_FTYPE_HECMW_DIST) {
-    strcpy(filename, files->meshfiles[0].filename);
+      files->meshfiles[0].type == HECMW_CTRL_FTYPE_HECMW_DIST) 
+  {
+    HECMW_ctrl_get_file_path(filename);
+    if (filename && strlen(filename) > 0)
+    {
+        strcat(filename, PATHSEP);
+        strcat(filename, files->meshfiles[0].filename);
+    }
+    else
+    {
+        strcpy(filename, files->meshfiles[0].filename);
+    }
+
     mesh = HECMW_get_dist_mesh(filename);
   } else {
     mesh = get_entire_mesh(files);

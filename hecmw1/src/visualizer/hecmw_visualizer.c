@@ -28,7 +28,20 @@ int HECMW_visualize_init_by_comm(HECMW_Comm VIS_COMM) {
   HECMW_Comm_size(VIS_COMM, &pesize);
   HECMW_Comm_rank(VIS_COMM, &mynode);
 
-  if ((contfp = fopen("hecmw_vis.ini", "r")) == NULL) {
+  // combine the path and file name
+  char fnamefull[HECMW_FILENAME_LEN + 1];
+  HECMW_ctrl_get_file_path(fnamefull);
+  if (fnamefull && strlen(fnamefull) > 0)
+  {
+      strcat(fnamefull, PATHSEP);
+      strcat(fnamefull, "hecmw_vis.ini");
+  }
+  else
+  {
+      strcpy(fnamefull, "hecmw_vis.ini");
+  }
+
+  if ((contfp = fopen(fnamefull, "r")) == NULL) {
     contfile = HECMW_ctrl_get_control_file("vis_ctrl");
     if ((contfp = fopen(contfile, "r")) == NULL)
       HECMW_vis_print_exit("ERROR: HEC-MW-VIS-E0011: Cannot open control file");

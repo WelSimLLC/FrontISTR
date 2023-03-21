@@ -37,6 +37,12 @@
 #define FSTR_CTRL_RCODE_DATA_NOTHING 1
 #define FSTR_CTRL_RCODE_DATA_LINE_NOTHING 2
 
+#if defined(WIN32) || defined(__WIN32__)
+#define PATHSEP "\\"
+#else
+#define PATHSEP "/"
+#endif
+
 typedef struct st_ctrl_rec {
   int line_no;
   char* line;

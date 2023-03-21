@@ -82,6 +82,9 @@ contains
       write(ILOG,'(a,f10.3,i10)') ' Maximum Temperature(global) :', tmax
       write(ILOG,'(a,f10.3,i10)') ' Minimum Temperature(global) :', tmin
     end if
+    
+    ! mark ending for reader
+    write(ILOG,*) 'ISTEP_END'
 
 
   end subroutine heat_output_log

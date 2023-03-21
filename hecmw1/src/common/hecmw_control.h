@@ -7,6 +7,13 @@
 #define HECMW_CONTROL_INCLUDED
 
 #define HECMW_CTRL_FILE "hecmw_ctrl.dat"
+#define HECMW_FILE_PATH ""
+
+#if defined(WIN32) || defined(__WIN32__)
+#define PATHSEP "\\"
+#else
+#define PATHSEP "/"
+#endif
 
 struct hecmw_ctrl_meshfile {
   int type;
@@ -43,7 +50,7 @@ struct hecmw_ctrl_meshfiles {
 };
 
 extern int HECMW_ctrl_init(void);
-extern int HECMW_ctrl_init_ex(const char *ctrlfile);
+extern int HECMW_ctrl_init_ex(const char* filepath, const char *ctrlfile);
 extern int HECMW_ctrl_finalize(void);
 extern struct hecmw_ctrl_meshfiles *HECMW_ctrl_get_meshfiles(char *name_ID);
 extern struct hecmw_ctrl_meshfiles *HECMW_ctrl_get_meshfiles_header(
@@ -71,5 +78,10 @@ extern char *HECMW_ctrl_get_control_file(char *name_ID);
 extern int HECMW_ctrl_is_exists_control(char *name_ID);
 extern int HECMW_ctrl_make_subdir(char *filename);
 extern int HECMW_ctrl_is_subdir(void);
+
+extern void HECMW_ctrl_get_file_path(char *filepath);
+
+extern char *trimwhitespace1(char *str);
+extern size_t trimwhitespace2(char *out, size_t len, const char *str);
 
 #endif

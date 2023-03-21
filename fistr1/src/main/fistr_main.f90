@@ -2,6 +2,14 @@
 ! Copyright (c) 2019 FrontISTR Commons
 ! This software is released under the MIT License, see LICENSE.txt
 !-------------------------------------------------------------------------------
+
+#ifdef __WIN32__
+#define PATHSEP "\\"
+#else
+#define PATHSEP "/"
+#endif
+
+
 module m_fstr_main
 
   use hecmw
@@ -31,18 +39,37 @@ module m_fstr_main
   type(fstr_couple), save                    :: fstrCPL
   type(fstr_freqanalysis), save              :: fstrFREQ
   character(len=HECMW_FILENAME_LEN)          :: name_ID
+  character(len=HECMW_FILENAME_LEN)          :: filepath
 
 contains
 
   subroutine fstr_main() bind(C,NAME='fstr_main')
     implicit none
     real(kind=kreal) :: T1, T2, T3
-
+    integer :: length_in, status
+    
     T1=0.0d0; T2=0.0d0; T3=0.0d0
+
+    ! get the working directory from the user input arguments
+    CALL get_command_argument(1, filepath, length_in, status)
+    if (status .ne. 0) then
+      write (*,*) 'get_command failed with status = ', status
+      stop
+    end if
+
+    if (LEN_TRIM(filepath) /= 0) then
+      write(*,*) 'Working directory: ', TRIM(filepath)
+    else
+      write (*,*) "No specified directory. Reading input scripts from the local directory."
+    endif
+    write (*,*) "Solving..."
+#ifdef _DEBUG
+    call sleep(3) ! needed for automatic debugging in vs2017 (F5)
+#endif
 
     ! =============== INITIALIZE ===================
 
-    call hecmw_init
+    call hecmw_init(filepath)
     myrank = hecmw_comm_get_rank()
     nprocs = hecmw_comm_get_size()
 
@@ -168,6 +195,7 @@ contains
       hecMAT%NDOF = 1
     endif
     call hecMAT_init( hecMAT )
+
   end subroutine fstr_init
 
   !------------------------------------------------------------------------------
@@ -179,15 +207,28 @@ contains
     character(len=HECMW_FILENAME_LEN) :: logfileNAME
     character(len=HECMW_FILENAME_LEN) :: msgfileNAME
     character(len=HECMW_FILENAME_LEN) :: dbgfileNAME
-    integer :: stat, flag, limit, irank
+    character(len=HECMW_FILENAME_LEN) :: filepath
+    integer :: stat, flag, limit, irank, length
 
     ! set file name --------------------------------
     call hecmw_ctrl_is_subdir( flag, limit )
+    call hecmw_ctrl_file_path( filepath ) ! get file path
+    ! RUN IT BACKWARDS to remove the trailing blanks, no idea why trim() does not work for filepath!!!
+    DO length = LEN(filepath), 1, -1
+        IF (filepath(length:length) .NE. ' ') EXIT
+    END DO
+
     write(s,*) myrank
     if( flag == 0 ) then
       write( logfileNAME, '(a,a)') trim(adjustl(s)), '.log'
+      if (length > 0) then
+          logfileNAME = filepath(1:length)//PATHSEP//trim(logfileNAME) ! build full file name with path
+      endif
       logfileNAME = adjustl(logfileNAME)
       write( dbgfileNAME, '(a,a)') 'FSTR.dbg.', trim(adjustl(s))
+      if (length > 0) then
+          dbgfileNAME =  filepath(1:length)//PATHSEP//trim(dbgfileNAME)  ! build full file name with path
+      endif
       dbgfileNAME = adjustl(dbgfileNAME)
     else
       if( nprocs > limit ) then
@@ -212,8 +253,14 @@ contains
         if( stat /= 0 ) call fstr_setup_util_err_stop( '### Cannot create directory' )
       endif
     endif
-    stafileNAME = 'FSTR.sta'
-    msgfileNAME = 'FSTR.msg'
+
+    if (length > 0) then
+      stafileNAME = filepath(1:length)//PATHSEP//'FSTR.sta'
+      msgfileNAME = filepath(1:length)//PATHSEP//'FSTR.msg'
+    else
+      stafileNAME = 'FSTR.sta'
+      msgfileNAME = 'FSTR.msg'
+    endif
 
     ! open & opening message out -------------------
     ! MSGFILE

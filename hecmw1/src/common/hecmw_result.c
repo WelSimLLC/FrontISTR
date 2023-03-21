@@ -86,10 +86,23 @@ int HECMW_result_write_by_name(char *name_ID) {
   HECMW_free(basename);
   if (ret > HECMW_FILENAME_LEN) return -1;
 
+  // build file name with full path
+  char fnamefull[HECMW_FILENAME_LEN + 1];
+  HECMW_ctrl_get_file_path(fnamefull);
+  if (fnamefull && strlen(fnamefull) > 0)
+  {
+      strcat(fnamefull, PATHSEP);
+      strcat(fnamefull, filename);
+  }
+  else
+  {
+      strcpy(fnamefull, filename);
+  }
+
   if (fg_text) {
-    if (HECMW_result_write_txt_by_fname(filename)) return -1;
+    if (HECMW_result_write_txt_by_fname(fnamefull)) return -1;
   } else {
-    if (HECMW_result_write_bin_by_fname(filename)) return -1;
+    if (HECMW_result_write_bin_by_fname(fnamefull)) return -1;
   }
 
   return 0;

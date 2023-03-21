@@ -235,7 +235,7 @@ contains
     parameter(NDOF=3)
     real(kind=kreal) H(nn)
     real(kind=kreal) PLX(nn), PLY(nn), PLZ(nn)
-    real(kind=kreal) XJ(3, 3), DET, WG
+    real(kind=kreal) XJ(3, 3), DET, WG, surfDet
     integer(kind=kint) IVOL, ISUF
     integer(kind=kint) NOD(nn)
     integer(kind=kint) IG2, LX, I , SURTYPE, NSUR
@@ -277,22 +277,35 @@ contains
     if( ISUF==1 ) then
       ! INTEGRATION OVER SURFACE
       do I=1,NSUR
-        elecoord(1,i)=XX(NOD(I))
-        elecoord(2,i)=YY(NOD(i))
-        elecoord(3,i)=ZZ(NOD(i))
+        elecoord(1,I)=XX(NOD(I))
+        elecoord(2,I)=YY(NOD(I))
+        elecoord(3,I)=ZZ(NOD(I))
       enddo
-      do IG2=1,NumOfQuadPoints( SURTYPE )
-        call getQuadPoint( SURTYPE, IG2, localcoord(1:2) )
-        call getShapeFunc( SURTYPE, localcoord(1:2), H(1:NSUR) )
-
-        WG=getWeight( SURTYPE, IG2 )
-        normal=SurfaceNormal( SURTYPE, NSUR, localcoord(1:2), elecoord(:,1:NSUR) )
-        do I=1,NSUR
-          VECT(3*NOD(I)-2)=VECT(3*NOD(I)-2)+val*WG*H(I)*normal(1)
-          VECT(3*NOD(I)-1)=VECT(3*NOD(I)-1)+val*WG*H(I)*normal(2)
-          VECT(3*NOD(I)  )=VECT(3*NOD(I)  )+val*WG*H(I)*normal(3)
+      if (PARAMS(3) == 1) then ! XYZ Pressure
+        do IG2=1,NumOfQuadPoints( SURTYPE )
+          call getQuadPoint( SURTYPE, IG2, localcoord(1:2) )
+          call getShapeFunc( SURTYPE, localcoord(1:2), H(1:NSUR) )
+          surfDet = SurfaceDet( SURTYPE, NSUR, localcoord(1:2), elecoord(:,1:NSUR))
+          WG=getWeight( SURTYPE, IG2 ) * surfDet
+          do I=1,NSUR ! NSUR=3, XYZ
+            VECT(3*NOD(I)-2)=VECT(3*NOD(I)-2)-WG*H(I)*PARAMS(0)
+            VECT(3*NOD(I)-1)=VECT(3*NOD(I)-1)-WG*H(I)*PARAMS(1)
+            VECT(3*NOD(I)  )=VECT(3*NOD(I)  )-WG*H(I)*PARAMS(2)
+          enddo
         enddo
-      enddo
+      else ! Normal Pressure
+        do IG2=1,NumOfQuadPoints( SURTYPE )
+          call getQuadPoint( SURTYPE, IG2, localcoord(1:2) )
+          call getShapeFunc( SURTYPE, localcoord(1:2), H(1:NSUR) )
+          WG=getWeight( SURTYPE, IG2 )
+          normal=SurfaceNormal( SURTYPE, NSUR, localcoord(1:2), elecoord(:,1:NSUR) )
+          do I=1,NSUR
+            VECT(3*NOD(I)-2)=VECT(3*NOD(I)-2)+val*WG*H(I)*normal(1)
+            VECT(3*NOD(I)-1)=VECT(3*NOD(I)-1)+val*WG*H(I)*normal(2)
+            VECT(3*NOD(I)  )=VECT(3*NOD(I)  )+val*WG*H(I)*normal(3)
+          enddo
+        enddo
+      endif
     endif
     !** VOLUME LOAD
     if( IVOL==1 ) then

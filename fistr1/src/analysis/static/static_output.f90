@@ -83,7 +83,7 @@ contains
 
     if( (mod(istep,fstrSOLID%output_ctrl(1)%frequency)==0 .or. outflag) ) then
       fnum = fstrSOLID%output_ctrl(1)%filenum
-      call fstr_static_post( fnum, hecMESH, fstrSOLID, istep )
+      call fstr_static_post( fnum, hecMESH, fstrSOLID, istep, time )
     endif
 
     if( fstrSOLID%output_ctrl(2)%outinfo%grp_id>0 .and. &
@@ -101,13 +101,14 @@ contains
 
   !> Summarizer of output data which prints out max and min output values
   !----------------------------------------------------------------------*
-  subroutine fstr_static_post( fnum, hecMESH, fstrSOLID, istep )
+  subroutine fstr_static_post( fnum, hecMESH, fstrSOLID, istep, dTime )
     !----------------------------------------------------------------------*
     use m_fstr
     integer, intent(in)                   :: fnum, istep
     type (hecmwST_local_mesh), intent(in) :: hecMESH
     type (fstr_solid), intent(in)         :: fstrSOLID
-
+    real(kind=kreal), intent(in)          :: dTime
+    
     real(kind=kreal)   :: Umax(6), Umin(6), Emax(14), Emin(14), Smax(14), Smin(14)
     real(kind=kreal)   :: Mmax(1), Mmin(1), EMmax(1), EMmin(1)
     real(kind=kreal)   :: EEmax(14), EEmin(14), ESmax(14), ESmin(14)
@@ -125,6 +126,7 @@ contains
     ndof = hecMESH%n_dof
 
     write( fnum, '(''#### Result step='',I6)') istep
+    write( fnum, '(''#### Result time='',ES14.6)') dTime
     select case (ndof)
       case (2)
         mdof = 3
@@ -228,15 +230,15 @@ contains
     enddo
 
 
-    write(ILOG,*)    '##### Local Summary @Node    :Max/IdMax/Min/IdMin####'
-    do i = 1, ndof; write(ILOG,1029) ' //U',i,      '  ',Umax(i),IUmax(i),Umin(i),IUmin(i);     end do
-    do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',Emax(i),IEmax(i),Emin(i),IEmin(i);     end do
-    do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',Smax(i),ISmax(i),Smin(i),ISmin(i);     end do
-    write(ILOG,1009) '//SMS '           ,Mmax(1),IMmax(1),Mmin(1),IMmin(1)
-    write(ILOG,*)    '##### Local Summary @Element :Max/IdMax/Min/IdMin####'
-    do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',EEmax(i),IEEmax(i),EEmin(i),IEEmin(i); end do
-    do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',ESmax(i),IESmax(i),ESmin(i),IESmin(i); end do
-    write(ILOG,1009) '//SMS '           ,EMmax(1),IEMmax(1),EMmin(1),IEMmin(1)
+    !write(ILOG,*)    '##### Local Summary @Node    :Max/IdMax/Min/IdMin####'
+    !do i = 1, ndof; write(ILOG,1029) ' //U',i,      '  ',Umax(i),IUmax(i),Umin(i),IUmin(i);     end do
+    !do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',Emax(i),IEmax(i),Emin(i),IEmin(i);     end do
+    !do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',Smax(i),ISmax(i),Smin(i),ISmin(i);     end do
+    !write(ILOG,1009) '//SMS '           ,Mmax(1),IMmax(1),Mmin(1),IMmin(1)
+    !write(ILOG,*)    '##### Local Summary @Element :Max/IdMax/Min/IdMin####'
+    !do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',EEmax(i),IEEmax(i),EEmin(i),IEEmin(i); end do
+    !do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',ESmax(i),IESmax(i),ESmin(i),IESmin(i); end do
+    !write(ILOG,1009) '//SMS '           ,EMmax(1),IEMmax(1),EMmin(1),IEMmin(1)
 
     !C*** Show Summary
     GUmax  = Umax; GUmin  = Umin;
@@ -296,15 +298,12 @@ contains
     call hecmw_allREDUCE_I(hecMESH,IEMmin,1,hecmw_max)
 
     if( hecMESH%my_rank==0 ) then
-      write(ILOG,*)    '##### Global Summary @Node    :Max/IdMax/Min/IdMin####'
+      write(ILOG,*) '### Summary ###'
       do i = 1, ndof; write(ILOG,1029) ' //U',i,      '  ',GUmax(i),IUmax(i),GUmin(i),IUmin(i);     end do
       do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',GEmax(i),IEmax(i),GEmin(i),IEmin(i);     end do
       do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',GSmax(i),ISmax(i),GSmin(i),ISmin(i);     end do
       write(ILOG,1009) '//SMS '           ,GMmax(1),IMmax(1),GMmin(1),IMmin(1)
-      write(ILOG,*)    '##### Global Summary @Element :Max/IdMax/Min/IdMin####'
-      do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',GEEmax(i),IEEmax(i),GEEmin(i),IEEmin(i); end do
-      do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',GESmax(i),IESmax(i),GESmin(i),IESmin(i); end do
-      write(ILOG,1009) '//SMS '           ,GEMmax(1),IEMmax(1),GEMmin(1),IEMmin(1)
+      write(ILOG,*) '### End ###'
     endif
 
     1009 format(a7,1pe12.4,i10,1pe12.4,i10)

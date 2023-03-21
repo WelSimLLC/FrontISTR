@@ -17,6 +17,7 @@
 #include "hecmw_path.h"
 
 static char ctrl_filename[HECMW_FILENAME_LEN + 1];
+static char ctrl_filepath[HECMW_FILENAME_LEN + 1];
 
 static int table_entire_mesh[] = {
     HECMW_CTRL_FTYPE_HECMW_ENTIRE, HECMW_CTRL_FTYPE_GEOFEM,
@@ -1890,6 +1891,7 @@ static int read_subdir_head_param_limit(void) {
 static int read_subdir(void) {
   int token, state;
   int flag_name                 = 0; /* flag for NAME */
+  char name[HECMW_NAME_LEN + 1] = "";
   enum {
     ST_FINISHED,
     ST_HEADER_LINE,
@@ -2018,7 +2020,7 @@ static int parse(void) {
   return 0;
 }
 
-int HECMW_ctrl_init_ex(const char *ctrlfile) {
+int HECMW_ctrl_init_ex(const char* filepath, const char *ctrlfile) {
   FILE *fp;
   HECMW_log(HECMW_LOG_DEBUG, "Getting control data");
 
@@ -2030,8 +2032,21 @@ int HECMW_ctrl_init_ex(const char *ctrlfile) {
   strcpy(ctrl_filename, ctrlfile);
   HECMW_log(HECMW_LOG_DEBUG, "Control file is '%s'", ctrl_filename);
 
-  if ((fp = fopen(ctrl_filename, "r")) == NULL) {
-    HECMW_set_error(HECMW_UTIL_E0001, "File: %s, %s", ctrl_filename,
+  strcpy(ctrl_filepath, filepath);
+  char fullfile[HECMW_FILENAME_LEN + 1];
+  if (strlen(ctrl_filepath) > 0) 
+  {
+      strcpy(fullfile, ctrl_filepath);
+      strcat(fullfile, PATHSEP);
+      strcat(fullfile, ctrl_filename);
+  }
+  else
+  {
+      strcpy(fullfile, ctrl_filename);
+  }
+
+  if ((fp = fopen(fullfile, "r")) == NULL) {
+    HECMW_set_error(HECMW_UTIL_E0001, "File: %s, %s", fullfile,
                     strerror(errno));
     return -1;
   }
@@ -2051,7 +2066,7 @@ int HECMW_ctrl_init_ex(const char *ctrlfile) {
   return 0;
 }
 
-int HECMW_ctrl_init(void) { return HECMW_ctrl_init_ex(HECMW_CTRL_FILE); }
+int HECMW_ctrl_init(void) { return HECMW_ctrl_init_ex(HECMW_FILE_PATH, HECMW_CTRL_FILE); }
 
 int HECMW_ctrl_finalize(void) {
   HECMW_log(HECMW_LOG_DEBUG, "Finalizing control data");
@@ -2470,12 +2485,17 @@ int HECMW_ctrl_make_subdir(char *filename) {
 
   while (token) {
     if ((dp = opendir(dirname)) == NULL) {
-#ifndef _WINDOWS
-
-      if (mkdir(dirname, mode) != 0) {
-#else
-
-      if (mkdir(dirname) != 0) {
+#ifdef _WINDOWS
+#include <windows.h>
+        wchar_t wtext[HECMW_FILENAME_LEN];
+        mbstowcs(wtext, dirname, strlen(dirname) + 1);//Plus null
+        if (CreateDirectory(wtext, NULL)) {
+#else 
+  #ifdef _MINGW
+    if (mkdir(dirname) != 0) {
+  #else
+    if (mkdir(dirname, mode) != 0) {
+  #endif
 #endif
 
         if (errno != EEXIST) return -1;
@@ -2517,28 +2537,31 @@ void HECMW_CTRL_INIT_IF(int *err) { hecmw_ctrl_init_if(err); }
 
 /*---------------------------------------------------------------------------*/
 
-void hecmw_ctrl_init_ex_if(char *ctrlfile, int *err, int len) {
+void hecmw_ctrl_init_ex_if(char* filepath, char *ctrlfile, int *err, int len) {
   char c_ctrlfile[HECMW_FILENAME_LEN + 1];
+  char c_filepath[HECMW_FILENAME_LEN + 1];
   *err = 1;
 
   if (HECMW_strcpy_f2c_r(ctrlfile, len, c_ctrlfile, sizeof(c_ctrlfile)) == NULL)
-    return;
+      return;
+  if (HECMW_strcpy_f2c_r(filepath, len, c_filepath, sizeof(c_filepath)) == NULL)
+      return;
 
-  if (HECMW_ctrl_init_ex(c_ctrlfile)) return;
+  if (HECMW_ctrl_init_ex(c_filepath, c_ctrlfile)) return;
 
   *err = 0;
 }
 
-void hecmw_ctrl_init_ex_if_(char *ctrlfile, int *err, int len) {
-  hecmw_ctrl_init_ex_if(ctrlfile, err, len);
+void hecmw_ctrl_init_ex_if_(char *filepath, char *ctrlfile, int *err, int len) {
+  hecmw_ctrl_init_ex_if(filepath, ctrlfile, err, len);
 }
 
-void hecmw_ctrl_init_ex_if__(char *ctrlfile, int *err, int len) {
-  hecmw_ctrl_init_ex_if(ctrlfile, err, len);
+void hecmw_ctrl_init_ex_if__(char *filepath, char *ctrlfile, int *err, int len) {
+  hecmw_ctrl_init_ex_if(filepath, ctrlfile, err, len);
 }
 
-void HECMW_CTRL_INIT_EX_IF(char *ctrlfile, int *err, int len) {
-  hecmw_ctrl_init_ex_if(ctrlfile, err, len);
+void HECMW_CTRL_INIT_EX_IF(char *filepath, char *ctrlfile, int *err, int len) {
+  hecmw_ctrl_init_ex_if(filepath, ctrlfile, err, len);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -2631,4 +2654,83 @@ void hecmw_ctrl_is_subdir__(int *flag, int *limit) {
 
 void HECMW_CTRL_IS_SUBDIR(int *flag, int *limit) {
   hecmw_ctrl_is_subdir(flag, limit);
+}
+
+void hecmw_ctrl_file_path(char* filepath) {
+    HECMW_strcpy_c2f(ctrl_filepath, filepath, HECMW_FILENAME_LEN);
+}
+
+void hecmw_ctrl_file_path_(char* filepath) {
+    hecmw_ctrl_file_path(filepath);
+}
+
+void hecmw_ctrl_file_path__(char* filepath) {
+    hecmw_ctrl_file_path(filepath);
+}
+
+void HECMW_CTRL_FILE_PATH(char* filepath) {
+    hecmw_ctrl_file_path(filepath);
+}
+
+void HECMW_ctrl_get_file_path(char* filepath) {
+    strcpy(filepath, ctrl_filepath);
+}
+
+// Note: This function returns a pointer to a substring of the original string.
+// If the given string was allocated dynamically, the caller must not overwrite
+// that pointer with the returned value, since the original pointer must be
+// deallocated using the same allocator with which it was allocated.  The return
+// value must NOT be deallocated using free() etc.
+char *trimwhitespace1(char *str) {
+    char *end;
+
+    // Trim leading space
+    while (isspace((unsigned char)*str)) str++;
+
+    if (*str == 0)  // All spaces?
+        return str;
+
+    // Trim trailing space
+    end = str + strlen(str) - 1;
+    while (end > str && isspace((unsigned char)*end)) end--;
+
+    // Write new null terminator
+    *(end + 1) = 0;
+
+    return str;
+}
+
+// Stores the trimmed input string into the given output buffer, which must be
+// large enough to store the result.  If it is too small, the output is
+// truncated.
+size_t trimwhitespace2(char *out, size_t len, const char *str)
+{
+    if (len == 0)
+        return 0;
+
+    const char *end;
+    size_t out_size;
+
+    // Trim leading space
+    while (isspace((unsigned char)*str)) str++;
+
+    if (*str == 0)  // All spaces?
+    {
+        *out = 0;
+        return 1;
+    }
+
+    // Trim trailing space
+    end = str + strlen(str) - 1;
+    while (end > str && isspace((unsigned char)*end)) end--;
+    end++;
+
+    // Set output size to minimum of trimmed string length and buffer size minus 1
+    out_size = (end - str) < len - 1 ? (end - str) : len - 1;
+
+    // Copy trimmed string and add null terminator
+    memcpy(out, str, out_size);
+    out[out_size] = 0;
+
+    return out_size;
 }

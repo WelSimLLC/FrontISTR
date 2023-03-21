@@ -129,6 +129,7 @@ contains
     ndof = hecMESH%n_dof
 
     write( fnum, '(''#### Result step='',I6)') fstrDYNAMIC%i_step
+    write( fnum, '(''#### Result time='',ES14.6)') fstrDYNAMIC%t_curr
     select case (ndof)
       case (2)
         mdof = 3
@@ -248,18 +249,18 @@ contains
     enddo
 
 
-    write(ILOG,*)    '##### Local Summary @Node    :Max/IdMax/Min/IdMin####'
-    do i = 1, ndof; write(ILOG,1029) ' //U',i,      '  ',Umax(i),IUmax(i),Umin(i),IUmin(i);     end do
-    if (ndof == 4)  write(ILOG,1009) ' //P  '           , Umax(4),IUmax(4),Umin(4),IUmin(4)
-    do i = 1, ndof; write(ILOG,1029) ' //V',i,      '  ',Vmax(i),IVmax(i),Vmin(i),IVmin(i);     end do
-    do i = 1, ndof; write(ILOG,1029) ' //A',i,      '  ',Amax(i),IAmax(i),Amin(i),IAmin(i);     end do
-    do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',Emax(i),IEmax(i),Emin(i),IEmin(i);     end do
-    do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',Smax(i),ISmax(i),Smin(i),ISmin(i);     end do
-    write(ILOG,1009) '//SMS '           ,Mmax(1),IMmax(1),Mmin(1),IMmin(1)
-    write(ILOG,*)    '##### Local Summary @Element :Max/IdMax/Min/IdMin####'
-    do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',EEmax(i),IEEmax(i),EEmin(i),IEEmin(i); end do
-    do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',ESmax(i),IESmax(i),ESmin(i),IESmin(i); end do
-    write(ILOG,1009) '//SMS '           ,EMmax(1),IEMmax(1),EMmin(1),IEMmin(1)
+    !write(ILOG,*)    '##### Local Summary @Node    :Max/IdMax/Min/IdMin####'
+    !do i = 1, ndof; write(ILOG,1029) ' //U',i,      '  ',Umax(i),IUmax(i),Umin(i),IUmin(i);     end do
+    !if (ndof == 4)  write(ILOG,1009) ' //P  '           , Umax(4),IUmax(4),Umin(4),IUmin(4)
+    !do i = 1, ndof; write(ILOG,1029) ' //V',i,      '  ',Vmax(i),IVmax(i),Vmin(i),IVmin(i);     end do
+    !do i = 1, ndof; write(ILOG,1029) ' //A',i,      '  ',Amax(i),IAmax(i),Amin(i),IAmin(i);     end do
+    !do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',Emax(i),IEmax(i),Emin(i),IEmin(i);     end do
+    !do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',Smax(i),ISmax(i),Smin(i),ISmin(i);     end do
+    !write(ILOG,1009) '//SMS '           ,Mmax(1),IMmax(1),Mmin(1),IMmin(1)
+    !write(ILOG,*)    '##### Local Summary @Element :Max/IdMax/Min/IdMin####'
+    !do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',EEmax(i),IEEmax(i),EEmin(i),IEEmin(i); end do
+    !do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',ESmax(i),IESmax(i),ESmin(i),IESmin(i); end do
+    !write(ILOG,1009) '//SMS '           ,EMmax(1),IEMmax(1),EMmin(1),IEMmin(1)
 
     !C*** Show Summary
     GUmax  = Umax; GUmin  = Umin; GVmax  = Vmax; GVmin  = Vmin; GAmax  = Amax; GAmin  = Amin;
@@ -331,7 +332,7 @@ contains
     call hecmw_allREDUCE_I(hecMESH,IEMmin,1,hecmw_max)
 
     if( hecMESH%my_rank==0 ) then
-      write(ILOG,*)    '##### Global Summary @Node    :Max/IdMax/Min/IdMin####'
+      write(ILOG,*) '### Summary ###'
       do i = 1, ndof; write(ILOG,1029) ' //U',i,      '  ',GUmax(i),IUmax(i),GUmin(i),IUmin(i);     end do
       if (ndof == 4)  write(ILOG,1009) ' //P  '           ,GUmax(4),IUmax(4),GUmin(4),IUmin(4)
       do i = 1, ndof; write(ILOG,1029) ' //V',i,      '  ',GVmax(i),IVmax(i),GVmin(i),IVmin(i);     end do
@@ -339,10 +340,7 @@ contains
       do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',GEmax(i),IEmax(i),GEmin(i),IEmin(i);     end do
       do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',GSmax(i),ISmax(i),GSmin(i),ISmin(i);     end do
       write(ILOG,1009) '//SMS '           ,GMmax(1),IMmax(1),GMmin(1),IMmin(1)
-      write(ILOG,*)    '##### Global Summary @Element :Max/IdMax/Min/IdMin####'
-      do i = 1, mdof; write(ILOG,1029) ' //E',label(i),' ',GEEmax(i),IEEmax(i),GEEmin(i),IEEmin(i); end do
-      do i = 1, mdof; write(ILOG,1029) ' //S',label(i),' ',GESmax(i),IESmax(i),GESmin(i),IESmin(i); end do
-      write(ILOG,1009) '//SMS '           ,GEMmax(1),IEMmax(1),GEMmin(1),IEMmin(1)
+      write(ILOG,*) '### End ###'
     endif
 
     1009 format(a7,1pe12.4,i10,1pe12.4,i10)

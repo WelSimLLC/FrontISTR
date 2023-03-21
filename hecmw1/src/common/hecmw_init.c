@@ -15,7 +15,7 @@ int HECMW_init_ex(int *argc, char ***argv, const char *ctrlfile) {
   if (HECMW_comm_init(argc, argv)) return -1;
   HECMW_log(HECMW_LOG_DEBUG, "Initilalizing...");
   if (ctrlfile == NULL) ctrlfile = HECMW_CTRL_FILE;
-  if (HECMW_ctrl_init_ex(ctrlfile)) return -1;
+  if (HECMW_ctrl_init_ex(HECMW_FILE_PATH, ctrlfile)) return -1;
   /*     if(HECMW_couple_comm_init() != HECMW_SUCCESS) return -1;  2007/12/27
    * S.Ito */
   return 0;

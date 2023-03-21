@@ -4437,6 +4437,18 @@ int HECMW_read_entire_mesh(const char *filename) {
   }
   HECMW_log(HECMW_LOG_DEBUG, "HECMW-ENTIRE mesh file is '%s'", filename);
 
+  // combine the path and file name
+  char filepath[HECMW_FILENAME_LEN + 1];
+  HECMW_ctrl_get_file_path(filepath);
+  if (filepath && strlen(filepath) > 0)
+  {
+      strcat(filepath, PATHSEP);
+      strcat(filepath, filename);
+      filename = filepath;
+  }
+
+  HECMW_log(HECMW_LOG_DEBUG, "HECMW-ENTIRE mesh file is '%s'", filename);
+
   if (strlen(filename) > HECMW_FILENAME_LEN) {
     HECMW_set_error(HECMW_IO_E0002, "");
     return -1;

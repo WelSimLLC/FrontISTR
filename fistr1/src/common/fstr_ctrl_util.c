@@ -28,6 +28,7 @@ static void set_data_err_msg(fstr_ctrl_data *ctrl, int line, int data_no,
 static void set_record_data_line_err_msg(fstr_ctrl_data *ctrl, int r);
 static char *gettoken(const char *line);
 static void strcpy_f2c(char *dest, const char *src, int len);
+static void strcpy_f2c_wspace(char* dest, const char* src, int len);
 static void strcpy_c2f(char *dest, int len, const char *src);
 static char *remove_header_space(char *token);
 static int Strncmpi(const char *s1, const char *s2, int len);
@@ -1107,7 +1108,20 @@ int fstr_ctrl_open(char *filename) {
   int i;
   int index;
   char fname[FILE_NAME_SIZE];
-  strcpy_f2c(fname, filename, FILE_NAME_SIZE);
+  strcpy_f2c_wspace(fname, filename, FILE_NAME_SIZE);
+
+  // combine the path and file name
+  char fnamefull[HECMW_FILENAME_LEN + 1];
+  HECMW_ctrl_get_file_path(fnamefull);
+  if (fnamefull && strlen(fnamefull) > 0)
+  {
+      strcat(fnamefull, PATHSEP);
+      strcat(fnamefull, fname);
+  }
+  else
+  {
+      strcpy(fnamefull, fname);
+  }
 
   if (is_first) {
     for (i = 0; i < ctrl_list_size; i++) {
@@ -1132,7 +1146,7 @@ int fstr_ctrl_open(char *filename) {
     }
   }
 
-  ctrl_list[index] = c_fstr_ctrl_open(fname);
+  ctrl_list[index] = c_fstr_ctrl_open(fnamefull);
 
   if (ctrl_list[index] == NULL) {
     return -1;
@@ -1917,6 +1931,23 @@ static void strcpy_f2c(char *dest, const char *src, int len) {
   }
 
   dest[i] = 0;
+}
+
+static void strcpy_f2c_wspace(char* dest, const char* src, int len)
+{
+    int i;
+    int fg = 0;
+
+    for (i = 0; i<len - 1; i++) {
+        if (src[i] != ' ')
+            fg = 1;
+        else if (fg) {
+            if (src[i + 1] == ' ' && src[i + 2] == ' ') // check the next two characters, return if two successive spaces;
+                break;
+        }
+        dest[i] = src[i];
+    }
+    dest[i] = 0;
 }
 
 /* JP-27 */
