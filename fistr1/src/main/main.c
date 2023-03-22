@@ -302,8 +302,8 @@ int main(int argc, char *argv[])
       }
     }
   }
-  print_buildinfo(1);
-  print_executeinfo(1);
+  //print_buildinfo(1);
+  //print_executeinfo(1);
 #ifndef HECMW_SERIAL
   MPI_Barrier( MPI_COMM_WORLD );
 #endif

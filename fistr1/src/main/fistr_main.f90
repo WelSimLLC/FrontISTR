@@ -26,7 +26,8 @@ module m_fstr_main
   use m_fstr_rcap_io
   use fstr_solver_dynamic
   use fstr_debug_dump
-
+  use OMP_LIB ! for omp_get_max_threads()
+  
   type(hecmwST_local_mesh), save             :: hecMESH
   type(hecmwST_matrix), save                 :: hecMAT
   type(hecmwST_matrix), save                 :: conMAT
@@ -50,6 +51,9 @@ contains
     
     T1=0.0d0; T2=0.0d0; T3=0.0d0
 
+    write(*,'(A)')
+    write (*,*) "Start to run FrontISTR v5.5.8161."
+    !$ print *, "Number of threads=",omp_get_max_threads()
     ! get the working directory from the user input arguments
     CALL get_command_argument(1, filepath, length_in, status)
     if (status .ne. 0) then
