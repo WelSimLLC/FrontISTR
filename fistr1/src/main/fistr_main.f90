@@ -52,7 +52,7 @@ contains
     T1=0.0d0; T2=0.0d0; T3=0.0d0
 
     write(*,'(A)')
-    write (*,*) "Start to run FrontISTR v5.5.8161."
+    write (*,*) "Start to run FrontISTR v5.5.8661."
     !$ print *, "Number of threads=",omp_get_max_threads()
     ! get the working directory from the user input arguments
     CALL get_command_argument(1, filepath, length_in, status)
