@@ -23,7 +23,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/></Configuration>
 		<Configuration Name="Debug|x64" TargetName="$(ProjectName)d" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(FrontISTR_SRC)\hecmw1\include;$(FrontISTR_SRC)\hecmw1\src\common;$(FrontISTR_SRC)\fistr1\include;$(FrontISTR_SRC)\fistr1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps\5.3.5;$(FrontISTR_SRC)\hecmw1\include;$(FrontISTR_SRC)\hecmw1\src\common;$(FrontISTR_SRC)\fistr1\include;$(FrontISTR_SRC)\fistr1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
 				<Tool Name="VFLibrarianTool"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -32,7 +32,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_fistr1_d"/></Configuration>
 		<Configuration Name="Release|x64" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(FrontISTR_SRC)\hecmw1\include;$(FrontISTR_SRC)\hecmw1\src\common;$(FrontISTR_SRC)\fistr1\include;$(FrontISTR_SRC)\fistr1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL;NDEBUG" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps\5.3.5;$(FrontISTR_SRC)\hecmw1\include;$(FrontISTR_SRC)\hecmw1\src\common;$(FrontISTR_SRC)\fistr1\include;$(FrontISTR_SRC)\fistr1\src\common" PreprocessorDefinitions="HECMW_METIS_VER=5;__WIN32__;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL;NDEBUG" RuntimeLibrary="rtMultiThreadedDLL"/>
 				<Tool Name="VFLibrarianTool"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
