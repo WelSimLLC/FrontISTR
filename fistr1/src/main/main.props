@@ -15,7 +15,7 @@
       <Command>postbuild_FemSolver2</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>FemSolver2\hecmw1.lib;FemSolver2\fhecmw1.lib;FemSolver2\libfistr.lib;FemSolver2\ffistr1.lib;FemSolver2\fistr_main.lib;$(INTEL_MKL)\lib\mkl_intel_lp64_dll.lib;$(INTEL_MKL)\lib\mkl_intel_thread_dll.lib;$(INTEL_MKL)\lib\mkl_core_dll.lib;$(INTEL_MKL)\lib\mkl_blacs_lp64_dll.lib;$(INTEL_MKL)\lib\mkl_scalapack_lp64_dll.lib;mumps\5.3.5\dmumps.lib;mumps\5.3.5\dmumps_c.lib;mumps\5.3.5\mumps_common_f.lib;mumps\5.3.5\mumps_common_c.lib;mumps\5.3.5\libpord.lib;metis\metis.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FemSolver2\hecmw1.lib;FemSolver2\fhecmw1.lib;FemSolver2\libfistr.lib;FemSolver2\ffistr1.lib;FemSolver2\fistr_main.lib;$(INTEL_MKL)\lib\mkl_intel_lp64_dll.lib;$(INTEL_MKL)\lib\mkl_intel_thread_dll.lib;$(INTEL_MKL)\lib\mkl_core_dll.lib;$(INTEL_MKL)\lib\mkl_blacs_lp64_dll.lib;$(INTEL_MKL)\lib\mkl_scalapack_lp64_dll.lib;mumps\5.3.5\dmumps.lib;mumps\5.3.5\dmumps_c.lib;mumps\5.3.5\mumps_common_f.lib;mumps\5.3.5\mumps_common_c.lib;mumps\5.3.5\libpord.lib;metis\metis.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

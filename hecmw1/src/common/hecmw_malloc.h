@@ -20,7 +20,11 @@
 #define HECMW_malloc(size) malloc(size)
 #define HECMW_calloc(nmemb, size) calloc(nmemb, size)
 #define HECMW_realloc(ptr, size) realloc(ptr, size)
+#ifdef _WIN32
+#define HECMW_strdup(s) _strdup(s)
+#else 
 #define HECMW_strdup(s) strdup(s)
+#endif
 #define HECMW_free(ptr) free(ptr)
 #endif
 

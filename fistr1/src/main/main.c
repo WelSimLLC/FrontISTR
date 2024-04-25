@@ -111,7 +111,11 @@ void print_buildinfo(int log_level) {
   printf("#                         FrontISTR                              #\n");
   printf("##################################################################\n");
   printf("---\n");
-  printf("version:      %d.%d.%d\n", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
+  if (VERSION_PATCH == 0){
+    printf("version:      %d.%d\n", VERSION_MAJOR, VERSION_MINOR);
+  }else{
+    printf("version:      %d.%d.%d\n", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
+  }
   printf("git_hash:     %s\n", GIT_HASH );
   printf("build:\n");
   printf("  date:       %s\n", BUILD_DATE );
@@ -216,7 +220,7 @@ void print_executeinfo(int log_level) {
 #ifndef HECMW_SERIAL
     printf("  MPI:       \"%d.%d, %.128s\"\n", mpi_ver, mpi_subver, mpilibver);
 #endif
-    //printf("  host:\n");
+    printf("  host:\n");
   }
 #ifndef HECMW_SERIAL
   
@@ -230,8 +234,8 @@ void print_executeinfo(int log_level) {
       MPI_Send(&hostname, len, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
     }
 #else
-  //gethostname(hostname, sizeof(hostname));
-  //printf("    %d: %s\n",0,hostname);
+  gethostname(hostname, sizeof(hostname));
+  printf("    %d: %s\n",0,hostname);
 #endif
   if (rank==0) printf("---\n");
 }
@@ -302,8 +306,8 @@ int main(int argc, char *argv[])
       }
     }
   }
-  //print_buildinfo(1);
-  //print_executeinfo(1);
+  print_buildinfo(1);
+  print_executeinfo(1);
 #ifndef HECMW_SERIAL
   MPI_Barrier( MPI_COMM_WORLD );
 #endif

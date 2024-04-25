@@ -60,6 +60,8 @@
     <ClInclude Include="src\common\hecmw_result_copy_c2f.h" />
     <ClInclude Include="src\common\hecmw_result_copy_f2c.h" />
     <ClInclude Include="src\common\hecmw_result_io.h" />
+    <ClInclude Include="src\common\hecmw_result_io_bin.h" />
+    <ClInclude Include="src\common\hecmw_result_io_txt.h" />
     <ClInclude Include="src\common\hecmw_set_int.h" />
     <ClInclude Include="src\common\hecmw_struct.h" />
     <ClInclude Include="src\common\hecmw_system.h" />
@@ -152,11 +154,11 @@
     <ClCompile Include="src\common\hecmw_reorder.c" />
     <ClCompile Include="src\common\hecmw_restart.c" />
     <ClCompile Include="src\common\hecmw_result.c" />
-    <ClCompile Include="src\common\hecmw_result_bin_io.c" />
     <ClCompile Include="src\common\hecmw_result_copy_c2f.c" />
     <ClCompile Include="src\common\hecmw_result_copy_f2c.c" />
     <ClCompile Include="src\common\hecmw_result_io.c" />
-    <ClCompile Include="src\common\hecmw_result_txt_io.c" />
+    <ClCompile Include="src\common\hecmw_result_io_bin.c" />
+    <ClCompile Include="src\common\hecmw_result_io_txt.c" />
     <ClCompile Include="src\common\hecmw_set_int.c" />
     <ClCompile Include="src\common\hecmw_system.c" />
     <ClCompile Include="src\common\hecmw_time.c" />
