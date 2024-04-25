@@ -377,19 +377,19 @@ contains
           0.5d0*fstrEIG%mass(j)*fstrDYNAMIC%VEL(j,2)*fstrDYNAMIC%VEL(j,2)
       enddo
 
-     !---  Restart info
-      if( fstrDYNAMIC%restart_nout > 0 ) then
-        if( mod(i,fstrDYNAMIC%restart_nout).eq.0 .or. i.eq.fstrDYNAMIC%n_step) then
-          call fstr_write_restart_dyna_nl(i,hecMESH,fstrSOLID,fstrDYNAMIC,fstrPARAM)
-        endif
-      endif
-
       !C-- output new displacement, velocity and acceleration
       call fstr_dynamic_Output(hecMESH, fstrSOLID, fstrDYNAMIC, fstrPARAM)
 
       !C-- output result of monitoring node
       call dynamic_output_monit(hecMESH, fstrPARAM, fstrDYNAMIC, fstrEIG, fstrSOLID)
       call fstr_UpdateState( hecMESH, fstrSOLID, fstrDYNAMIC%t_delta )
+
+     !---  Restart info
+      if( fstrDYNAMIC%restart_nout > 0 ) then
+        if( mod(i,fstrDYNAMIC%restart_nout).eq.0 .or. i.eq.fstrDYNAMIC%n_step) then
+          call fstr_write_restart_dyna_nl(i,hecMESH,fstrSOLID,fstrDYNAMIC,fstrPARAM)
+        endif
+      endif
 
     enddo
     !C-- end of time step loop
@@ -457,7 +457,7 @@ contains
     integer(kind=kint) :: ctAlgo
     integer(kind=kint) :: max_iter_contact, count_step
     integer(kind=kint) :: stepcnt
-    real(kind=kreal)   :: maxDLag
+    real(kind=kreal)   :: maxDLag, converg_dlag
 
     logical :: is_mat_symmetric
     integer(kind=kint) :: n_node_global
@@ -570,6 +570,9 @@ contains
     !!
     !!    step = 1,2,....,fstrDYNAMIC%n_step
     !!
+    max_iter_contact = fstrSOLID%step_ctrl(cstep)%max_contiter
+    converg_dlag = fstrSOLID%step_ctrl(cstep)%converg_lag
+    
     do i= restrt_step_num, fstrDYNAMIC%n_step
 
       fstrDYNAMIC%i_step = i
@@ -589,7 +592,6 @@ contains
         fstrDYNAMIC%VEC2(j) = b1*fstrDYNAMIC%ACC(j,1) + b2*fstrDYNAMIC%VEL(j,1)
       enddo
 
-      max_iter_contact = 6 !1
       count_step = 0
       stepcnt = 0
       loopFORcontactAnalysis: do while( .TRUE. )
@@ -700,7 +702,7 @@ contains
           !          call hecmw_allreduce_R1(hecMESH, maxDlag, HECMW_MAX)
           !          if( res<fstrSOLID%step_ctrl(cstep)%converg .and. maxDLag<1.0d-5 .and. iter>1 ) exit
           if( (res<fstrSOLID%step_ctrl(cstep)%converg  .or.    &
-            relres<fstrSOLID%step_ctrl(cstep)%converg) .and. maxDLag<1.0d-4 ) exit
+            relres<fstrSOLID%step_ctrl(cstep)%converg) .and. maxDLag < converg_dlag ) exit
           res1 = res
           rf=1.0d0
           if( iter>1 .and. res>res1 )rf=0.5d0*rf
@@ -791,13 +793,6 @@ contains
           0.5d0*fstrEIG%mass(j)*fstrDYNAMIC%VEL(j,2)*fstrDYNAMIC%VEL(j,2)
       enddo
 
-      !---  Restart info
-      if( fstrDYNAMIC%restart_nout > 0 .and. &
-          (mod(i,fstrDYNAMIC%restart_nout).eq.0 .or. i.eq.fstrDYNAMIC%n_step) ) then
-        call fstr_write_restart_dyna_nl(i,hecMESH,fstrSOLID,fstrDYNAMIC,fstrPARAM,&
-          infoCTChange%contactNode_current)
-      endif
-
       !C-- output new displacement, velocity and acceleration
       call fstr_dynamic_Output(hecMESH, fstrSOLID, fstrDYNAMIC, fstrPARAM)
 
@@ -805,6 +800,13 @@ contains
       call dynamic_output_monit(hecMESH, fstrPARAM, fstrDYNAMIC, fstrEIG, fstrSOLID)
 
       call fstr_UpdateState( hecMESH, fstrSOLID, fstrDYNAMIC%t_delta )
+
+      !---  Restart info
+      if( fstrDYNAMIC%restart_nout > 0 .and. &
+          (mod(i,fstrDYNAMIC%restart_nout).eq.0 .or. i.eq.fstrDYNAMIC%n_step) ) then
+        call fstr_write_restart_dyna_nl(i,hecMESH,fstrSOLID,fstrDYNAMIC,fstrPARAM,&
+          infoCTChange%contactNode_current)
+      endif
 
     enddo
     !C
