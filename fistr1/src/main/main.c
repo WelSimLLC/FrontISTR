@@ -25,7 +25,7 @@
 #endif
 
 #include <hecmw_config.h>
-#include <AppVersion.h>
+//#include <AppVersion.h>
 
 extern void fstr_main();
 
@@ -111,7 +111,7 @@ void print_buildinfo(int log_level) {
   printf("#                         FrontISTR                              #\n");
   printf("##################################################################\n");
   printf("---\n");
-  printf("version:      %d.%d.%d\n", VERSION_MAJOR, VERSION_MINOR, WSRevision);
+  printf("version:      %d.%d.%d\n", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
   printf("git_hash:     %s\n", GIT_HASH );
   printf("build:\n");
   printf("  date:       %s\n", BUILD_DATE );
