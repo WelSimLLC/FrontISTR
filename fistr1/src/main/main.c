@@ -220,7 +220,7 @@ void print_executeinfo(int log_level) {
 #ifndef HECMW_SERIAL
     printf("  MPI:       \"%d.%d, %.128s\"\n", mpi_ver, mpi_subver, mpilibver);
 #endif
-    printf("  host:\n");
+    //printf("  host:\n");
   }
 #ifndef HECMW_SERIAL
   
@@ -234,8 +234,8 @@ void print_executeinfo(int log_level) {
       MPI_Send(&hostname, len, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
     }
 #else
-  gethostname(hostname, sizeof(hostname));
-  printf("    %d: %s\n",0,hostname);
+  //gethostname(hostname, sizeof(hostname));
+  //printf("    %d: %s\n",0,hostname);
 #endif
   if (rank==0) printf("---\n");
 }
