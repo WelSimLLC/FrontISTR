@@ -1,6 +1,5 @@
-REM set WELSIM_SRC=D:\WelSimLLC\CodeDV\WelSim\v29\src
 set FrontISTR_SRC=D:\WelSimLLC-github\FrontISTR
-set WELSIM_EXEC=D:\WelSimLLC\executable29
+set WELSIM_EXEC=D:\WelSimLLC\executable30
 set INTEL_MKL=C:\Program Files (x86)\Intel\oneAPI\mkl\latest
 set IFORT_COMPILER=C:\Program Files (x86)\Intel\oneAPI\compiler\latest
 set WELSIM_LIBPACK=D:\WelSimLLC\CodeDV\libPack
