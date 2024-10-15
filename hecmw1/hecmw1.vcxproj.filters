@@ -295,6 +295,15 @@
     <ClInclude Include="src\common\hecmw_result_io_txt.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper.h">
+      <Filter>solver\precond\ml</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_33.h">
+      <Filter>solver\precond\ml</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_nn.h">
+      <Filter>solver\precond\ml</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\visualizer\hecmw_vis_color_composite_sf.c">
@@ -558,9 +567,6 @@
     <ClCompile Include="src\solver\solver_direct_parallel\matrix_repart.c">
       <Filter>solver\solver_direct_parallel</Filter>
     </ClCompile>
-    <ClCompile Include="src\solver\precond\nn\hecmw_ML_wrapper.c">
-      <Filter>solver\precond</Filter>
-    </ClCompile>
     <ClCompile Include="src\visualizer\hecmw_vis_combine.c">
       <Filter>visualizer</Filter>
     </ClCompile>
@@ -578,6 +584,15 @@
     </ClCompile>
     <ClCompile Include="src\common\hecmw_result_io_bin.c">
       <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_33_c.c">
+      <Filter>solver\precond\ml</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_nn_c.c">
+      <Filter>solver\precond\ml</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_wrapper.c">
+      <Filter>solver\precond\ml</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -598,6 +613,9 @@
     </Filter>
     <Filter Include="solver\precond">
       <UniqueIdentifier>{df683f30-6757-43e5-bd35-9840dbdb8b5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\precond\ml">
+      <UniqueIdentifier>{98c41352-98a5-4bd5-b53d-f2a36697c2d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
