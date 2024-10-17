@@ -295,13 +295,13 @@
     <ClInclude Include="src\common\hecmw_result_io_txt.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper.h">
+    <ClInclude Include="src\solver\precond\ml\hecmw_ML_helper.h">
       <Filter>solver\precond\ml</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_33.h">
+    <ClInclude Include="src\solver\precond\ml\hecmw_ML_helper_33.h">
       <Filter>solver\precond\ml</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_nn.h">
+    <ClInclude Include="src\solver\precond\ml\hecmw_ML_helper_nn.h">
       <Filter>solver\precond\ml</Filter>
     </ClInclude>
   </ItemGroup>
@@ -585,13 +585,13 @@
     <ClCompile Include="src\common\hecmw_result_io_bin.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_33_c.c">
+    <ClCompile Include="src\solver\precond\ml\hecmw_ML_helper_33_c.c">
       <Filter>solver\precond\ml</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_nn_c.c">
+    <ClCompile Include="src\solver\precond\ml\hecmw_ML_helper_nn_c.c">
       <Filter>solver\precond\ml</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_wrapper.c">
+    <ClCompile Include="src\solver\precond\ml\hecmw_ML_wrapper.c">
       <Filter>solver\precond\ml</Filter>
     </ClCompile>
   </ItemGroup>

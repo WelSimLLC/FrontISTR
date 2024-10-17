@@ -11,9 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper.h" />
-    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_33.h" />
-    <ClInclude Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_nn.h" />
     <ClInclude Include="src\common\hecmw_ablex.h" />
     <ClInclude Include="src\common\hecmw_bin_io.h" />
     <ClInclude Include="src\common\hecmw_bit_array.h" />
@@ -73,6 +70,9 @@
     <ClInclude Include="src\common\hecmw_util.h" />
     <ClInclude Include="src\common\hecmw_varray_int.h" />
     <ClInclude Include="src\hecmw\hecmw.h" />
+    <ClInclude Include="src\solver\precond\ml\hecmw_ML_helper.h" />
+    <ClInclude Include="src\solver\precond\ml\hecmw_ML_helper_33.h" />
+    <ClInclude Include="src\solver\precond\ml\hecmw_ML_helper_nn.h" />
     <ClInclude Include="src\solver\solver_direct_parallel\matrix2graph.h" />
     <ClInclude Include="src\solver\solver_direct_parallel\separator.h" />
     <ClInclude Include="src\visualizer\hecmw_fstr_endian.h" />
@@ -114,9 +114,6 @@
     <ClInclude Include="src\visualizer\hecmw_vis_voxel_gen.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_33_c.c" />
-    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_helper_nn_c.c" />
-    <ClCompile Include="C:\Users\hefeh\Downloads\FrontISTR-master\hecmw1\src\solver\precond\ml\hecmw_ML_wrapper.c" />
     <ClCompile Include="src\common\hecmw_ablex.c" />
     <ClCompile Include="src\common\hecmw_bin_io.c" />
     <ClCompile Include="src\common\hecmw_bit_array.c" />
@@ -172,6 +169,9 @@
     <ClCompile Include="src\common\hecmw_util.c" />
     <ClCompile Include="src\common\hecmw_varray_int.c" />
     <ClCompile Include="src\common\hecmw_visual_if.c" />
+    <ClCompile Include="src\solver\precond\ml\hecmw_ML_helper_33_c.c" />
+    <ClCompile Include="src\solver\precond\ml\hecmw_ML_helper_nn_c.c" />
+    <ClCompile Include="src\solver\precond\ml\hecmw_ML_wrapper.c" />
     <ClCompile Include="src\solver\solver_direct_parallel\matrix2graph.c" />
     <ClCompile Include="src\solver\solver_direct_parallel\matrix_repart.c" />
     <ClCompile Include="src\solver\solver_direct_parallel\mem_util.c" />
