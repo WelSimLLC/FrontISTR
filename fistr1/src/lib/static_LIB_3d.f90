@@ -161,9 +161,11 @@ contains
       end if
 
       DB(1:6, 1:nn*ndof) = matmul( D, B(1:6, 1:nn*ndof) )
-      forall( i=1:nn*ndof,  j=1:nn*ndof )
-        stiff(i, j) = stiff(i, j)+dot_product( B(:, i),  DB(:, j) )*WG
-      end forall
+      do j=1,nn*ndof 
+        do i=1,nn*ndof
+          stiff(i, j) = stiff(i, j)+dot_product( B(:, i),  DB(:, j) )*WG
+        enddo
+      enddo
 
       ! calculate the stress matrix ( TOTAL LAGRANGE METHOD )
       if( flag == TOTALLAG .OR. flag==UPDATELAG ) then
@@ -193,9 +195,11 @@ contains
           Smat(j+6, j+6) = stress(3)
         end do
         SBN(1:9, 1:nn*ndof) = matmul( Smat(1:9, 1:9),  BN(1:9, 1:nn*ndof) )
-        forall( i=1:nn*ndof,  j=1:nn*ndof )
-          stiff(i, j) = stiff(i, j)+dot_product( BN(:, i),  SBN(:, j) )*WG
-        end forall
+        do j=1,nn*ndof 
+          do i=1,nn*ndof
+            stiff(i, j) = stiff(i, j)+dot_product( BN(:, i),  SBN(:, j) )*WG
+          enddo
+        enddo
 
       end if
 
@@ -235,7 +239,7 @@ contains
     parameter(NDOF=3)
     real(kind=kreal) H(nn)
     real(kind=kreal) PLX(nn), PLY(nn), PLZ(nn)
-    real(kind=kreal) XJ(3, 3), DET, WG, surfDet
+    real(kind=kreal) XJ(3, 3), DET, WG, g11, g12, g21, g22, surfJac
     integer(kind=kint) IVOL, ISUF
     integer(kind=kint) NOD(nn)
     integer(kind=kint) IG2, LX, I , SURTYPE, NSUR
@@ -243,7 +247,7 @@ contains
     real(kind=kreal) AX, AY, AZ, RX, RY, RZ, HX, HY, HZ, val
     real(kind=kreal) PHX, PHY, PHZ
     real(kind=kreal) COEFX, COEFY, COEFZ
-    real(kind=kreal) normal(3), localcoord(3), elecoord(3, nn), deriv(nn, 3)
+    real(kind=kreal) normal(3), localcoord(3), elecoord(3, nn), deriv(nn, 3), gderiv(3,2)
 
     AX = 0.0d0; AY = 0.0d0; AZ = 0.0d0; RX = 0.0d0; RY = 0.0d0; RZ = 0.0d0;
     !
@@ -285,18 +289,28 @@ contains
         do IG2=1,NumOfQuadPoints( SURTYPE )
           call getQuadPoint( SURTYPE, IG2, localcoord(1:2) )
           call getShapeFunc( SURTYPE, localcoord(1:2), H(1:NSUR) )
-          surfDet = SurfaceDet( SURTYPE, NSUR, localcoord(1:2), elecoord(:,1:NSUR))
-          WG=getWeight( SURTYPE, IG2 ) * surfDet
-          do I=1,NSUR ! NSUR=3, XYZ
-            VECT(3*NOD(I)-2)=VECT(3*NOD(I)-2)-WG*H(I)*PARAMS(0)
-            VECT(3*NOD(I)-1)=VECT(3*NOD(I)-1)-WG*H(I)*PARAMS(1)
-            VECT(3*NOD(I)  )=VECT(3*NOD(I)  )-WG*H(I)*PARAMS(2)
+          call getShapeDeriv( SURTYPE, localcoord, deriv )
+          
+          !!DETERMINANT OF JACOBIAN
+          XJ(1:3,1:3)= matmul( elecoord(1:3,1:nn), deriv(1:nn,1:3) )
+          g11 = XJ(1,1)*XJ(1,1) + XJ(2,1)*XJ(2,1) + XJ(3,1)*XJ(3,1);
+          g12 = XJ(1,1)*XJ(1,2) + XJ(2,1)*XJ(2,2) + XJ(3,1)*XJ(3,2);
+          g21 = g12;
+          g22 = XJ(1,2)*XJ(1,2) + XJ(2,2)*XJ(2,2) + XJ(3,2)*XJ(3,2);
+          surfJac=sqrt(g11*g22 - g12*g21);
+          if( DET<=0.d0 ) stop "Math error in DL_C3! Determinant<=0.0"
+          WG=getWeight( SURTYPE, IG2 )*surfJac
+          do I=1,NSUR
+            VECT(3*NOD(I)-2)=VECT(3*NOD(I)-2)+WG*H(I)*PARAMS(0)
+            VECT(3*NOD(I)-1)=VECT(3*NOD(I)-1)+WG*H(I)*PARAMS(1)
+            VECT(3*NOD(I)  )=VECT(3*NOD(I)  )+WG*H(I)*PARAMS(2)
           enddo
         enddo
       else ! Normal Pressure
         do IG2=1,NumOfQuadPoints( SURTYPE )
           call getQuadPoint( SURTYPE, IG2, localcoord(1:2) )
           call getShapeFunc( SURTYPE, localcoord(1:2), H(1:NSUR) )
+
           WG=getWeight( SURTYPE, IG2 )
           normal=SurfaceNormal( SURTYPE, NSUR, localcoord(1:2), elecoord(:,1:NSUR) )
           do I=1,NSUR
@@ -343,9 +357,9 @@ contains
           PHX=XCOD-HX
           PHY=YCOD-HY
           PHZ=ZCOD-HZ
-          COEFX=RHO*val*val*PHX
-          COEFY=RHO*val*val*PHY
-          COEFZ=RHO*val*val*PHZ
+          COEFX=RHO*val*dabs(val)*PHX
+          COEFY=RHO*val*dabs(val)*PHY
+          COEFZ=RHO*val*dabs(val)*PHZ
         end if
 
         WG=getWeight( etype, LX )*DET
@@ -633,7 +647,7 @@ contains
 
     if( flag == INFINITESIMAL ) then
 
-      gauss%stress(1:6) = matmul( D(1:6, 1:6), dstrain(1:6) )
+      gauss%stress(1:6) = gauss%stress_bak(1:6) + matmul( D(1:6, 1:6), dstrain(1:6)-gauss%strain_bak(1:6) )
       if( isViscoelastic(mtype) .AND. tincr /= 0.0D0 ) then
         call StressUpdate( gauss, D3, dstrain, gauss%stress, coordsys, time, tincr, ttc, ttn, hdflag=hdflag_in )
         gauss%stress = real(gauss%stress)
@@ -667,7 +681,7 @@ contains
 
         !stress integration
         trD = dstrain(1)+dstrain(2)+dstrain(3)
-        dum(:,:) = dumstress + matmul( rot,dumstress ) - matmul( dumstress, rot ) + dumstress*trD
+        dum(:,:) = dumstress + matmul( rot,dumstress ) - matmul( dumstress, rot ) - dumstress*trD
         !call Hughes_Winget_rotation_3D( rot, dumstress, dum )
 
         gauss%stress(1) = dum(1,1) + dstress(1)
@@ -1006,10 +1020,10 @@ contains
 
     TEMP(1:12) = TEMP(1:12)/IC
 
-    forall( i=1:nn )
+    do i=1,nn 
       ndstrain(i, 1:6) = TEMP(1:6)
       ndstress(i, 1:6) = TEMP(7:12)
-    end forall
+    enddo
 
   end subroutine NodalStress_C3
 
