@@ -49,8 +49,8 @@
 			<Add option="-fPIC" />
 			<Add option="-DWITH_MKL" />
 			<Add option="-DHECMW_WITH_MUMPS" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/common" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/include" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/common" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/include" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
 		</Compiler>
 		<Unit filename="src/common/fstr_ctrl_util.c">
@@ -65,10 +65,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/common/hecmw2fstr_connect_conv.h" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

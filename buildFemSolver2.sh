@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#export WELSIM_SRC=$HOME/WelSimLLC/CodeDV/WelSim/gitbucket/welsim
-export FrontISTR_SRC=$HOME/WelSimLLC-github/FrontISTR
+export FRONTISTR_SRC=$HOME/WelSimLLC-github/FrontISTR
 export WELSIM_LIBPACK=$HOME/WelSimLLC/CodeDV/libPack/Linux
-export WELSIM_EXEC=$HOME/WelSimLLC/executable29
-export INTEL_DIR=$HOME/mySys/intel/compilers_and_libraries_2018.5.274/linux
+export WELSIM_EXEC=$HOME/WelSimLLC/executable30
+export INTEL_DIR=$HOME/mySys/intel/oneapi/compiler/2022.1.0/linux
+export MKL_DIR=$HOME/mySys/intel/oneapi/mkl/2022.1.0
 
 
 echo "Run CodeBlocks..."

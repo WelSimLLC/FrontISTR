@@ -55,10 +55,10 @@
 			<Add option="-DHECMW_WITH_MUMPS" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mumps" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/common" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/hecmw" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/solver" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/visualizer" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/common" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/hecmw" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/solver" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/visualizer" />
 		</Compiler>
 		<Unit filename="src/analysis/dynamic/freq/fstr_frequency_analysis.f90" />
 		<Unit filename="src/analysis/dynamic/mode/fstr_EIG_lanczos.f90" />

@@ -13,8 +13,8 @@
 				<Option compiler="gfortran" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/fistr1/obj/Debug" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/obj/Debug" />
+					<Add directory="$(FRONTISTR_SRC)/fistr1/obj/Debug" />
+					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Debug" />
 				</Compiler>
 				<Linker>
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1_d.a \" />
@@ -40,8 +40,8 @@
 				<Option compiler="gfortran" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/fistr1/obj/Release" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/obj/Release" />
+					<Add directory="$(FRONTISTR_SRC)/fistr1/obj/Release" />
+					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Release" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -71,7 +71,7 @@
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
 		</Compiler>
 		<Linker>
-			<Add option="-Wl,-rpath,.:./:./lib:./plugins:./plugins/platforms:./vtk6:./occ6:./boost:./intel" />
+			<Add option="-Wl,-rpath,.:./:./lib:./plugins:./plugins/platforms:./vtk:./occt:./boost:./intel" />
 			<Add library="libmpi" />
 			<Add library="libmkl_intel_lp64" />
 			<Add library="libmkl_intel_thread" />
@@ -87,9 +87,6 @@
 			<Add directory="$(INTEL_DIR)/compiler/lib/intel64" />
 		</Linker>
 		<Unit filename="src/main/fistr_main.f90" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
