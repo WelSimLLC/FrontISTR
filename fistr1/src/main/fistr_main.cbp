@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="fistr_main" />
+		<Option pch_mode="2" />
+		<Option compiler="gfortran" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/fistr_main_d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gfortran" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Debug" />
+					<Add directory="$(FRONTISTR_SRC)/fistr1/obj/Debug" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_fistr_main_d.sh" />
+					<Add after="./postbuild_fistr_main_d.sh" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/fistr_main" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gfortran" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Release" />
+					<Add directory="$(FRONTISTR_SRC)/fistr1/obj/Release" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="chmod +x postbuild_fistr_main.sh" />
+					<Add after="./postbuild_fistr_main.sh" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-cpp" />
+			<Add option="-DHECMW_METIS_VER=5" />
+			<Add option="-DWITH_MKL" />
+			<Add option="-DHECMW_WITH_MUMPS" />
+		</Compiler>
+		<Unit filename="fistr_main.f90" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

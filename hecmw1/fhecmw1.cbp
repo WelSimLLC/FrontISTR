@@ -46,6 +46,8 @@
 		</Build>
 		<Compiler>
 			<Add option="-cpp" />
+			<Add option="-fallow-argument-mismatch" />
+			<Add option="-fallow-invalid-boz" />
 			<Add option="-DHECMW_METIS_VER=5" />
 			<Add option="-DHECMW_WITH_MUMPS" />
 			<Add option="-DHECMW_WITH_MKL" />
@@ -71,8 +73,10 @@
 		<Unit filename="src/common/hecmw_restart_f.f90" />
 		<Unit filename="src/common/hecmw_result_f.f90" />
 		<Unit filename="src/common/hecmw_util_f.F90" />
+		<Unit filename="src/common/hecmw_varray_int_f.f90" />
 		<Unit filename="src/common/hecmw_visualizer_f.f90" />
 		<Unit filename="src/hecmw/hecmw.f90" />
+		<Unit filename="src/operations/element_smoothing/hecmw_es_mesh_connectivity.f90" />
 		<Unit filename="src/solver/clustermkl/hecmw_ClusterMKL_wrapper.F90" />
 		<Unit filename="src/solver/clustermkl/hecmw_solver_direct_ClusterMKL.f90" />
 		<Unit filename="src/solver/communication/hecmw_comm_contact_f.f90" />
@@ -81,11 +85,22 @@
 		<Unit filename="src/solver/communication/hecmw_solver_SR.F90" />
 		<Unit filename="src/solver/communication/hecmw_solver_SR_i.F90" />
 		<Unit filename="src/solver/communication/hecmw_solver_misc.f90" />
+		<Unit filename="src/solver/contact/hecmw_mat_resid_contact.f90" />
+		<Unit filename="src/solver/contact/hecmw_solver_contact.f90" />
+		<Unit filename="src/solver/contact/set_arrays_DirectSolver.f90" />
+		<Unit filename="src/solver/contact/solve_LINEQ_MUMPS_contact.f90" />
+		<Unit filename="src/solver/contact/solve_LINEQ_contact_elim.f90" />
+		<Unit filename="src/solver/contact/solve_LINEQ_direct_serial_lag.f90" />
+		<Unit filename="src/solver/contact/solve_LINEQ_iter_contact.f90" />
+		<Unit filename="src/solver/contact/solve_LINEQ_mkl.F90" />
+		<Unit filename="src/solver/contact/sparse_matrix_contact.f90" />
 		<Unit filename="src/solver/init/hecmw_solve_error.f90" />
 		<Unit filename="src/solver/init/hecmw_solve_init.f90" />
 		<Unit filename="src/solver/iterative/hecmw_solver_BiCGSTAB.f90" />
 		<Unit filename="src/solver/iterative/hecmw_solver_CG.f90" />
 		<Unit filename="src/solver/iterative/hecmw_solver_GMRES.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_GMRESR.f90" />
+		<Unit filename="src/solver/iterative/hecmw_solver_GMRESREN.f90" />
 		<Unit filename="src/solver/iterative/hecmw_solver_GPBiCG.f90" />
 		<Unit filename="src/solver/iterative/hecmw_solver_Iterative.f90" />
 		<Unit filename="src/solver/las/hecmw_jadm.f90" />
@@ -105,6 +120,7 @@
 		<Unit filename="src/solver/las/hecmw_solver_scaling_66.f90" />
 		<Unit filename="src/solver/las/hecmw_solver_scaling_nn.f90" />
 		<Unit filename="src/solver/las/hecmw_tuning_fx.f90" />
+		<Unit filename="src/solver/main/hecmw_solver.f90" />
 		<Unit filename="src/solver/matrix/hecmw_allocate.f90" />
 		<Unit filename="src/solver/matrix/hecmw_array_util.f90" />
 		<Unit filename="src/solver/matrix/hecmw_estimate_condition.F90" />
@@ -113,6 +129,7 @@
 		<Unit filename="src/solver/matrix/hecmw_mat_con.f90" />
 		<Unit filename="src/solver/matrix/hecmw_mat_id.f90" />
 		<Unit filename="src/solver/matrix/hecmw_matrix_contact.f90" />
+		<Unit filename="src/solver/matrix/hecmw_matrix_contact_lagrange.f90" />
 		<Unit filename="src/solver/matrix/hecmw_matrix_dump.f90" />
 		<Unit filename="src/solver/matrix/hecmw_matrix_misc.f90" />
 		<Unit filename="src/solver/matrix/hecmw_matrix_ordering_CM.f90" />
@@ -167,9 +184,11 @@
 		<Unit filename="src/solver/solver_direct_lag/m_crs_matrix_lag.f90" />
 		<Unit filename="src/solver/solver_direct_lag/m_irjc_matrix_lag.f90" />
 		<Unit filename="src/solver/solver_direct_lag/my_hecmw_util_f_lag.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/hecmw_solver_direct_parallel.F90" />
 		<Unit filename="src/solver/solver_direct_parallel/m_cclsmatrix.f90" />
 		<Unit filename="src/solver/solver_direct_parallel/m_child_matrix.f90" />
 		<Unit filename="src/solver/solver_direct_parallel/m_crs_matrix.f90" />
+		<Unit filename="src/solver/solver_direct_parallel/m_elap.F90" />
 		<Unit filename="src/solver/solver_direct_parallel/m_irjc_matrix.f90" />
 		<Unit filename="src/solver/solver_direct_parallel/m_irjcmatrix.f90" />
 		<Unit filename="src/solver/solver_direct_parallel/m_matrix_partition_info.f90" />

@@ -5,6 +5,7 @@
 		<Project filename="hecmw1/fhecmw1.cbp" />
 		<Project filename="fistr1/cfistr1.cbp" />
 		<Project filename="fistr1/ffistr1.cbp" />
-		<Project filename="fistr1/WelSimFemSolver2.cbp" />
+		<Project filename="fistr1/src/main/fistr_main.cbp" />
+		<Project filename="fistr1/src/main/WelSimFemSolver2.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="WelSimFemSolver2" />
+		<Option pch_mode="2" />
+		<Option compiler="gfortran" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/WelSimFemSolver2_d" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfistr_main_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libcfistr1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfhecmw1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1_d.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/WelSimFemSolver2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfistr_main.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libcfistr1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfhecmw1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/common" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/visualizer" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/hecmw" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/operations/dynamic_load_balancing" />
+			<Add directory="$(FRONTISTR_SRC)" />
+			<Add directory="$(MKL_DIR)/include" />
+		</Compiler>
+		<Linker>
+			<Add library="libmpi" />
+			<Add library="libpthread" />
+			<Add directory="$(MKL_DIR)/lib/intel64" />
+		</Linker>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

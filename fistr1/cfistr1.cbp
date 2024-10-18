@@ -49,8 +49,8 @@
 			<Add option="-fPIC" />
 			<Add option="-DWITH_MKL" />
 			<Add option="-DHECMW_WITH_MUMPS" />
+			<Add option="-DHECMW_SERIAL" />
 			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/common" />
-			<Add directory="$(FRONTISTR_SRC)/hecmw1/include" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
 		</Compiler>
 		<Unit filename="src/common/fstr_ctrl_util.c">
