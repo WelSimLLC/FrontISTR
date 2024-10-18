@@ -17,19 +17,18 @@
 					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Debug" />
 				</Compiler>
 				<Linker>
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfistr_main_d.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1_d.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libcfistr1_d.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfhecmw1_d.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1_d.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a \" />
-					<Add option="$(WELSIM_LIBPACK)/lib/metis/libmetis.a" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libpord.a" />
 				</Linker>
 				<ExtraCommands>
-					<Add before="chmod +x prebuild_FemSolver2_d.sh" />
-					<Add before="./prebuild_FemSolver2_d.sh" />
-					<Add after="chmod +x postbuild_FemSolver2_d.sh" />
-					<Add after="./postbuild_FemSolver2_d.sh" />
+					<Add after="chmod +x postbuild_FemSolver2d.sh" />
+					<Add after="./postbuild_FemSolver2d.sh" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
@@ -45,17 +44,16 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfistr_main.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libffistr1.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libcfistr1.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libfhecmw1.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a \" />
-					<Add option="$(WELSIM_LIBPACK)/lib/metis/libmetis.a" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libpord.a" />
 				</Linker>
 				<ExtraCommands>
-					<Add before="chmod +x prebuild_FemSolver2.sh" />
-					<Add before="./prebuild_FemSolver2.sh" />
 					<Add after="chmod +x postbuild_FemSolver2.sh" />
 					<Add after="./postbuild_FemSolver2.sh" />
 					<Mode after="always" />
@@ -68,7 +66,15 @@
 			<Add option="-DHECMW_METIS_VER=5" />
 			<Add option="-DWITH_MKL" />
 			<Add option="-DHECMW_WITH_MUMPS" />
+			<Add option="-D_OPENMP" />
+			<Add option="-DHECMW_SERIAL" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/common" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/visualizer" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/hecmw" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/operations/dynamic_load_balancing" />
+			<Add directory="$(FRONTISTR_SRC)" />
+			<Add directory="$(MKL_DIR)/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-Wl,-rpath,.:./:./lib:./plugins:./plugins/platforms:./vtk:./occt:./boost:./intel" />
@@ -80,13 +86,15 @@
 			<Add library="libmkl_scalapack_lp64" />
 			<Add library="libmkl_blacs_intelmpi_lp64" />
 			<Add library="libpthread" />
-			<Add library="libmpifort" />
+			<Add library="libmpi_mpifh" />
+			<Add library="libmetis" />
 			<Add directory="$(WELSIM_LIBPACK)/lib/mpi" />
-			<Add directory="$(INTEL_DIR)/mkl/lib/intel64" />
-			<Add directory="$(INTEL_DIR)/lib/intel64" />
-			<Add directory="$(INTEL_DIR)/compiler/lib/intel64" />
+			<Add directory="$(MKL_DIR)/lib/intel64" />
+			<Add directory="$(INTEL_DIR)/lib" />
 		</Linker>
-		<Unit filename="src/main/fistr_main.f90" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

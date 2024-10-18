@@ -46,17 +46,18 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
 			<Add option="-fPIC" />
+			<Add option="-std=c++11" />
 			<Add option="-DHECMW_MALLOC" />
 			<Add option="-DWITH_MKL" />
 			<Add option="-DHECMW_WITH_MUMPS" />
 			<Add option="-DHECMW_SERIAL" />
 			<Add directory="$(WELSIM_LIBPACK)/include" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/common" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/visualizer" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/include" />
+			<Add directory="src/common" />
+			<Add directory="src/visualizer" />
+			<Add directory="src/hecmw" />
+			<Add directory="src/operations/dynamic_load_balancing" />
 		</Compiler>
 		<Linker>
 			<Add directory="$(WELSIM_LIBPACK)/lib" />
@@ -241,9 +242,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/common/hecmw_result.h" />
-		<Unit filename="src/common/hecmw_result_bin_io.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/common/hecmw_result_copy_c2f.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -256,9 +254,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/common/hecmw_result_io.h" />
-		<Unit filename="src/common/hecmw_result_txt_io.c">
+		<Unit filename="src/common/hecmw_result_io_bin.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/common/hecmw_result_io_bin.h" />
+		<Unit filename="src/common/hecmw_result_io_txt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/common/hecmw_result_io_txt.h" />
 		<Unit filename="src/common/hecmw_set_int.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -288,10 +291,16 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/hecmw/hecmw.h" />
-		<Unit filename="src/solver/precond/33/hecmw_ML_wrapper_33.c">
+		<Unit filename="src/solver/precond/ml/hecmw_ML_helper.h" />
+		<Unit filename="src/solver/precond/ml/hecmw_ML_helper_33.h" />
+		<Unit filename="src/solver/precond/ml/hecmw_ML_helper_33_c.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/solver/precond/nn/hecmw_ML_wrapper.c">
+		<Unit filename="src/solver/precond/ml/hecmw_ML_helper_nn.h" />
+		<Unit filename="src/solver/precond/ml/hecmw_ML_helper_nn_c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/solver/precond/ml/hecmw_ML_wrapper.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/solver/solver_direct_parallel/matrix2graph.c">

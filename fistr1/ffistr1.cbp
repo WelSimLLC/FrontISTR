@@ -16,8 +16,8 @@
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/obj/Debug" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/fistr1/obj/Debug" />
+					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Debug" />
+					<Add directory="$(FRONTISTR_SRC)/fistr1/obj/Debug" />
 				</Compiler>
 				<ExtraCommands>
 					<Add after="chmod +x postbuild_ffistr1_d.sh" />
@@ -35,8 +35,8 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-Wall" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/obj/Release" />
-					<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/fistr1/obj/Release" />
+					<Add directory="$(FRONTISTR_SRC)/hecmw1/obj/Release" />
+					<Add directory="$(FRONTISTR_SRC)/fistr1/obj/Release" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,15 +50,18 @@
 		</Build>
 		<Compiler>
 			<Add option="-cpp" />
+			<Add option="-fallow-argument-mismatch" />
+			<Add option="-fallow-invalid-boz" />
 			<Add option="-DHECMW_METIS_VER=5" />
 			<Add option="-DWITH_MKL" />
 			<Add option="-DHECMW_WITH_MUMPS" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mpi" />
 			<Add directory="$(WELSIM_LIBPACK)/include/mumps" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/common" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/hecmw" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/solver" />
-			<Add directory="$(WELSIM_SRC)/solver/WelSimFemSolver2/hecmw1/src/visualizer" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/common" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/hecmw" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/solver" />
+			<Add directory="$(FRONTISTR_SRC)/hecmw1/src/visualizer" />
+			<Add directory="$(FRONTISTR_SRC)/fistr1/src/common" />
 		</Compiler>
 		<Unit filename="src/analysis/dynamic/freq/fstr_frequency_analysis.f90" />
 		<Unit filename="src/analysis/dynamic/mode/fstr_EIG_lanczos.f90" />
@@ -67,7 +70,6 @@
 		<Unit filename="src/analysis/dynamic/mode/fstr_EIG_setMASS.f90" />
 		<Unit filename="src/analysis/dynamic/mode/fstr_EIG_tridiag.f90" />
 		<Unit filename="src/analysis/dynamic/mode/fstr_solve_eigen.f90" />
-		<Unit filename="src/analysis/dynamic/transit/dynamic_make_result.f90" />
 		<Unit filename="src/analysis/dynamic/transit/dynamic_mat_ass_bc.f90" />
 		<Unit filename="src/analysis/dynamic/transit/dynamic_mat_ass_bc_ac.f90" />
 		<Unit filename="src/analysis/dynamic/transit/dynamic_mat_ass_bc_vl.f90" />
@@ -106,20 +108,11 @@
 		<Unit filename="src/analysis/static/fstr_Update.f90" />
 		<Unit filename="src/analysis/static/fstr_ass_load.f90" />
 		<Unit filename="src/analysis/static/fstr_mat_con_contact.f90" />
-		<Unit filename="src/analysis/static/fstr_mat_resid_contact.f90" />
 		<Unit filename="src/analysis/static/fstr_solve_NLGEOM.f90" />
 		<Unit filename="src/analysis/static/fstr_solve_NonLinear.f90" />
 		<Unit filename="src/analysis/static/make_result.f90" />
 		<Unit filename="src/analysis/static/readtemp.f90" />
-		<Unit filename="src/analysis/static/set_arrays_DirectSolver.f90" />
-		<Unit filename="src/analysis/static/solve_LINEQ_MUMPS_contact.f90" />
-		<Unit filename="src/analysis/static/solve_LINEQ_contact.f90" />
-		<Unit filename="src/analysis/static/solve_LINEQ_direct_serial_lag.f90" />
-		<Unit filename="src/analysis/static/solve_LINEQ_iter_contact.f90" />
-		<Unit filename="src/analysis/static/solve_LINEQ_mkl.f90" />
-		<Unit filename="src/analysis/static/sparse_matrix_contact.f90" />
 		<Unit filename="src/analysis/static/static_echo.f90" />
-		<Unit filename="src/analysis/static/static_make_result.f90" />
 		<Unit filename="src/analysis/static/static_output.f90" />
 		<Unit filename="src/common/fstr_contact.f90" />
 		<Unit filename="src/common/fstr_ctrl_common.f90" />
@@ -132,24 +125,17 @@
 		<Unit filename="src/common/fstr_debug_dump.f90" />
 		<Unit filename="src/common/fstr_get_prop.f90" />
 		<Unit filename="src/common/fstr_precheck.f90" />
-		<Unit filename="src/common/fstr_rcap_io.f90" />
-		<Unit filename="src/common/fstr_rcap_io_dummy.f90" />
 		<Unit filename="src/common/fstr_setup.f90" />
-		<Unit filename="src/common/fstr_setup_data.f90" />
 		<Unit filename="src/common/fstr_setup_util.f90" />
 		<Unit filename="src/common/hecmw2fstr_mesh_conv.f90" />
 		<Unit filename="src/lib/GaussM.f90" />
 		<Unit filename="src/lib/contact/bucket_search.f90" />
 		<Unit filename="src/lib/contact/contact_lib.f90" />
-		<Unit filename="src/lib/contact/fstr_contact_comm.f90" />
-		<Unit filename="src/lib/contact/fstr_contact_def.f90" />
+		<Unit filename="src/lib/contact/fstr_contact_def.F90" />
+		<Unit filename="src/lib/contact/fstr_contact_param.f90" />
 		<Unit filename="src/lib/contact/surf_ele.f90" />
 		<Unit filename="src/lib/dynamic_mass.f90" />
 		<Unit filename="src/lib/eigen_LIB.f90" />
-		<Unit filename="src/lib/eigen_LIB_2d1mass.f90" />
-		<Unit filename="src/lib/eigen_LIB_2d2mass.f90" />
-		<Unit filename="src/lib/eigen_LIB_3d1mass.f90" />
-		<Unit filename="src/lib/eigen_LIB_3d2mass.f90" />
 		<Unit filename="src/lib/element/element.f90" />
 		<Unit filename="src/lib/element/hex20n.f90" />
 		<Unit filename="src/lib/element/hex8n.f90" />
@@ -172,7 +158,6 @@
 		<Unit filename="src/lib/heat_LIB_FILM.f90" />
 		<Unit filename="src/lib/heat_LIB_NEUTRAL.f90" />
 		<Unit filename="src/lib/heat_LIB_RADIATE.f90" />
-		<Unit filename="src/lib/heat_LIB_THERMAL.f90" />
 		<Unit filename="src/lib/m_common_struct.f90" />
 		<Unit filename="src/lib/m_fstr.f90" />
 		<Unit filename="src/lib/m_out.f90" />
@@ -181,29 +166,9 @@
 		<Unit filename="src/lib/physics/ElasticLinear.f90" />
 		<Unit filename="src/lib/physics/Elastoplastic.f90" />
 		<Unit filename="src/lib/physics/Hyperelastic.f90" />
-		<Unit filename="src/lib/physics/HyperelasticBlatzKo.f90" />
-		<Unit filename="src/lib/physics/HyperelasticExtendedTube.f90" />
-		<Unit filename="src/lib/physics/HyperelasticGent.f90" />
-		<Unit filename="src/lib/physics/HyperelasticMooneyRivlin359.f90" />
-		<Unit filename="src/lib/physics/HyperelasticOgden.f90" />
-		<Unit filename="src/lib/physics/HyperelasticPolynomial.f90" />
-		<Unit filename="src/lib/physics/HyperelasticYeoh.f90" />
 		<Unit filename="src/lib/physics/Viscoelastic.f90" />
 		<Unit filename="src/lib/physics/calMatMatrix.f90" />
 		<Unit filename="src/lib/physics/creep.f90" />
-		<Unit filename="src/lib/physics/creepCombinedTimeHardening.f90" />
-		<Unit filename="src/lib/physics/creepExponentialForm.f90" />
-		<Unit filename="src/lib/physics/creepGeneralizedBlackburn.f90" />
-		<Unit filename="src/lib/physics/creepGeneralizedExponential.f90" />
-		<Unit filename="src/lib/physics/creepGeneralizedGarofalo.f90" />
-		<Unit filename="src/lib/physics/creepGeneralizedGraham.f90" />
-		<Unit filename="src/lib/physics/creepGeneralizedTimeHardening.f90" />
-		<Unit filename="src/lib/physics/creepModifiedStrainHardening.f90" />
-		<Unit filename="src/lib/physics/creepModifiedTimeHardening.f90" />
-		<Unit filename="src/lib/physics/creepNorton2.f90" />
-		<Unit filename="src/lib/physics/creepRationalPolynomial.f90" />
-		<Unit filename="src/lib/physics/creepStrainHardening.f90" />
-		<Unit filename="src/lib/physics/creepTimeHardening.f90" />
 		<Unit filename="src/lib/physics/material.f90" />
 		<Unit filename="src/lib/physics/mechgauss.f90" />
 		<Unit filename="src/lib/precheck_LIB_2d.f90" />
