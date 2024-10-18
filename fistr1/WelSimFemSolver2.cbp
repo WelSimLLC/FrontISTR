@@ -23,11 +23,9 @@
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1_d.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a \" />
-					<Add option="$(WELSIM_LIBPACK)/lib/metis/libmetis.a" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libpord.a" />
 				</Linker>
 				<ExtraCommands>
-					<Add before="chmod +x prebuild_FemSolver2_d.sh" />
-					<Add before="./prebuild_FemSolver2_d.sh" />
 					<Add after="chmod +x postbuild_FemSolver2_d.sh" />
 					<Add after="./postbuild_FemSolver2_d.sh" />
 					<Mode after="always" />
@@ -51,11 +49,9 @@
 					<Add option="$(WELSIM_LIBPACK)/lib/FemSolver2/libhecmw1.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libdmumps.a \" />
 					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libmumps_common.a \" />
-					<Add option="$(WELSIM_LIBPACK)/lib/metis/libmetis.a" />
+					<Add option="$(WELSIM_LIBPACK)/lib/mumps/libpord.a" />
 				</Linker>
 				<ExtraCommands>
-					<Add before="chmod +x prebuild_FemSolver2.sh" />
-					<Add before="./prebuild_FemSolver2.sh" />
 					<Add after="chmod +x postbuild_FemSolver2.sh" />
 					<Add after="./postbuild_FemSolver2.sh" />
 					<Mode after="always" />
@@ -80,13 +76,13 @@
 			<Add library="libmkl_scalapack_lp64" />
 			<Add library="libmkl_blacs_intelmpi_lp64" />
 			<Add library="libpthread" />
-			<Add library="libmpifort" />
+			<Add library="libmpi_mpifh" />
+			<Add library="libmetis" />
 			<Add directory="$(WELSIM_LIBPACK)/lib/mpi" />
-			<Add directory="$(INTEL_DIR)/mkl/lib/intel64" />
-			<Add directory="$(INTEL_DIR)/lib/intel64" />
-			<Add directory="$(INTEL_DIR)/compiler/lib/intel64" />
+			<Add directory="$(MKL_DIR)/lib/intel64" />
+			<Add directory="$(INTEL_DIR)/lib" />
 		</Linker>
-		<Unit filename="src/main/fistr_main.f90" />
+		<Unit filename="src/main/fistr_main_old.f90" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
