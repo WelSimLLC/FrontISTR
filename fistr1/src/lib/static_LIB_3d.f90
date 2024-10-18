@@ -298,7 +298,6 @@ contains
           g21 = g12;
           g22 = XJ(1,2)*XJ(1,2) + XJ(2,2)*XJ(2,2) + XJ(3,2)*XJ(3,2);
           surfJac=sqrt(g11*g22 - g12*g21);
-          if( DET<=0.d0 ) stop "Math error in DL_C3! Determinant<=0.0"
           WG=getWeight( SURTYPE, IG2 )*surfJac
           do I=1,NSUR
             VECT(3*NOD(I)-2)=VECT(3*NOD(I)-2)+WG*H(I)*PARAMS(0)
