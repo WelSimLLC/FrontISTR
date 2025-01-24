@@ -26,7 +26,7 @@
 			<Tool Name="VFPostBuildEventTool"/>
 		</Configuration>
 		<Configuration Name="Debug|x64" UseCompiler="ifxCompiler" TargetName="$(ProjectName)d" ConfigurationType="typeStaticLibrary">
-			<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps\5.3.5;$(FrontISTR_SRC)\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+			<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(FrontISTR_SRC)\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
 			<Tool Name="VFLibrarianTool"/>
 			<Tool Name="VFResourceCompilerTool"/>
 			<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -36,7 +36,7 @@
 			<Tool Name="VFPostBuildEventTool" CommandLine="postbuild_fhecmw_d.bat"/>
 		</Configuration>
 		<Configuration Name="Release|x64" UseCompiler="ifxCompiler" ConfigurationType="typeStaticLibrary">
-			<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps\5.3.5;$(FrontISTR_SRC)\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL;NDEBUG" RuntimeLibrary="rtMultiThreadedDLL"/>
+			<Tool Name="VFFortranCompilerTool" AdditionalOptions="-openmp" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="$(WELSIM_LIBPACK)\include;$(WELSIM_LIBPACK)\include\mumps;$(FrontISTR_SRC)\hecmw1\include" PreprocessorDefinitions="HECMW_METIS_VER=5;HECMW_WITH_MUMPS;HECMW_WITH_MKL;HECMW_WITH_LAPACK;HECMW_SERIAL;NDEBUG" RuntimeLibrary="rtMultiThreadedDLL"/>
 			<Tool Name="VFLibrarianTool"/>
 			<Tool Name="VFResourceCompilerTool"/>
 			<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
@@ -118,6 +118,8 @@
 		<File RelativePath=".\src\solver\las\hecmw_solver_scaling_66.f90"/>
 		<File RelativePath=".\src\solver\las\hecmw_solver_scaling_nn.f90"/>
 		<File RelativePath=".\src\solver\las\hecmw_tuning_fx.f90"/></Filter>
+		<Filter Name="main">
+		<File RelativePath=".\src\solver\main\hecmw_solver.f90"/></Filter>
 		<Filter Name="matrix">
 		<File RelativePath=".\src\solver\matrix\hecmw_allocate.f90"/>
 		<File RelativePath=".\src\solver\matrix\hecmw_array_util.f90"/>
@@ -142,8 +144,6 @@
 		<Filter Name="mumps">
 		<File RelativePath=".\src\solver\mumps\hecmw_MUMPS_wrapper.F90"/>
 		<File RelativePath=".\src\solver\mumps\hecmw_solver_direct_MUMPS.f90"/></Filter>
-		<Filter Name="main">
-		<File RelativePath=".\src\solver\main\hecmw_solver.f90"/></Filter>
 		<Filter Name="precond">
 		<Filter Name="bilu">
 		<File RelativePath=".\src\solver\precond\bilu\hecmw_precond_BILU.f90"/>
